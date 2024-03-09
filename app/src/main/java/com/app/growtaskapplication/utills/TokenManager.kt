@@ -16,8 +16,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import javax.inject.Inject
 
-class TokenManager @Inject constructor(
-    @ApplicationContext context: Context) {
+class TokenManager @Inject constructor(@ApplicationContext context: Context) {
 
     private var prefs = context.getSharedPreferences(PREFS_TOKEN_FILE, Context.MODE_PRIVATE)
 

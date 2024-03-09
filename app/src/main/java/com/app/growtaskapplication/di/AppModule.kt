@@ -1,7 +1,10 @@
 package com.app.growtaskapplication.di
 
+import android.app.Application
+import androidx.room.Room
 import com.app.growtaskapplication.data.api.ApiService
 import com.app.growtaskapplication.data.interceptor.HeaderInterceptor
+import com.app.growtaskapplication.data.local.SearchDatabase
 import com.app.growtaskapplication.ui.view.HomeFragment
 import com.app.growtaskapplication.utills.TokenRefreshService
 import dagger.Module
@@ -13,6 +16,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Named
+import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -27,6 +31,7 @@ class AppModule {
     fun provideBaseUrl(): String = "https://api.spotify.com/v1/"
 
     @Provides
+    @Singleton
     fun provideHttpLoggingInterceptor():HttpLoggingInterceptor{
         return HttpLoggingInterceptor().apply {
             level = HttpLoggingInterceptor.Level.BODY
@@ -34,6 +39,7 @@ class AppModule {
     }
 
     @Provides
+    @Singleton
     fun provideOkHttpClient(headerInterceptor: HeaderInterceptor, httpLoggingInterceptor: HttpLoggingInterceptor): OkHttpClient {
         return OkHttpClient.Builder()
             .addInterceptor(headerInterceptor)
@@ -76,4 +82,10 @@ class AppModule {
     fun provideTokenRefreshService():TokenRefreshService {
         return HomeFragment()
     }
+
+    @Provides
+    @Singleton
+    fun provideDatabase(app: Application) : SearchDatabase =
+        Room.databaseBuilder(app, SearchDatabase::class.java, "search_database")
+            .build()
 }

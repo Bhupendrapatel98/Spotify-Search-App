@@ -39,7 +39,6 @@ class HomeFragment : Fragment(), TokenRefreshService {
     private val artistViewModel: ArtistViewModel by activityViewModels()
     private val playlistViewModel: PlaylistViewModel by activityViewModels()
     private val tracksViewModel: TracksViewModel by activityViewModels()
-
     @Inject
     lateinit var tokenManager: TokenManager
 
@@ -59,7 +58,7 @@ class HomeFragment : Fragment(), TokenRefreshService {
     }
 
     private fun callGetTokeApi() {
-        if (tokenManager.getToken() == null) {
+        if (tokenManager.getToken().isNullOrEmpty()) {
             tokenViewModel.getToken(
                 Constants.CLIENT_CREDENTIAL,
                 Constants.CLIENT_ID,
@@ -124,7 +123,6 @@ class HomeFragment : Fragment(), TokenRefreshService {
     }
 
     override fun refreshToken() {
-        tokenManager.clearData()
         callGetTokeApi()
     }
 

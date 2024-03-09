@@ -1,16 +1,11 @@
 package com.app.growtaskapplication.data.interceptor
 
-import android.util.Log
-import com.app.growtaskapplication.data.api.ApiService
 import com.app.growtaskapplication.utills.TokenManager
 import com.app.growtaskapplication.utills.TokenRefreshService
 import okhttp3.Interceptor
 import okhttp3.Request
 import okhttp3.Response
-import org.json.JSONException
-import org.json.JSONObject
 import java.net.HttpURLConnection
-import java.util.*
 import javax.inject.Inject
 
 class HeaderInterceptor @Inject constructor(
@@ -29,6 +24,7 @@ class HeaderInterceptor @Inject constructor(
             return if (newAccessToken != token) {
                 chain.proceed(newRequestWithAccessToken(token.toString(), originalRequest))
             } else {
+                tokenManager.clearData()
                 tokenRefreshService.refreshToken()
                 chain.proceed(newRequestWithAccessToken(token.toString(), originalRequest))
             }
