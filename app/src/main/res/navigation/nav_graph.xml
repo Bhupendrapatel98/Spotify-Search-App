@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.app.growtaskapplication.ui.view.HomeFragment"
+        android:label="HomeFragment"
+        >
+        <action
+            android:id="@+id/action_homeFragment_to_artistDetailFragment"
+            app:destination="@id/artistDetailFragment" />
+
+        <argument
+            android:name="artistId"
+            app:argType="string" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/artistDetailFragment"
+        android:name="com.app.growtaskapplication.ui.view.ArtistDetailFragment"
+        android:label="ArtistDetailFragment" />
+
+</navigation>
