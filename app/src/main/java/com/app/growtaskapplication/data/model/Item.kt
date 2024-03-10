@@ -8,7 +8,8 @@ import com.app.growtaskapplication.data.model.tracks.ExternalIds
 
 @Entity(tableName = "searchResults")
 data class Item(
-    @PrimaryKey val id: String,
+    @PrimaryKey(autoGenerate = true) val uId: Long = 0,
+    val id: String,
     val album_type: String?,
     val artists: List<Artist>,
     //val available_markets: List<String>,
