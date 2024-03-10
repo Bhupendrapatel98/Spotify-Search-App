@@ -2,11 +2,8 @@ package com.app.growtaskapplication.data.repository
 
 import com.app.growtaskapplication.data.api.ApiService
 import com.app.growtaskapplication.data.local.SearchDatabase
-import com.app.growtaskapplication.data.model.album.Albums
-import com.app.growtaskapplication.data.model.album.SearchAlbumResponse
-import com.app.growtaskapplication.data.model.artist.ArtistSearchResponse
-import com.app.growtaskapplication.data.model.playlist.PlaylistSearchResponse
-import com.app.growtaskapplication.data.model.tracks.TracksSearchResponse
+import com.app.growtaskapplication.data.model.Data
+import com.app.growtaskapplication.data.model.SearchResponse
 import com.app.growtaskapplication.utills.NetworkUtils
 import com.app.growtaskapplication.utills.Resource
 import kotlinx.coroutines.Dispatchers
@@ -23,44 +20,44 @@ class SearchUserRepository @Inject constructor(
     private val networkUtils: NetworkUtils
 ) {
 
-    fun searchAlbum(queryMap: HashMap<String, String>): Flow<Resource<SearchAlbumResponse>> = flow {
+    fun searchAlbum(queryMap: HashMap<String, String>): Flow<Resource<SearchResponse>> = flow {
         emit(Resource.loading())
 
         if (networkUtils.isInterNetAvailable()) {
             searchDatabase.searchDao().clearData()
-            val response = apiService.searchAlbum(queryMap).albums.items
+            val response = apiService.searchAlbum(queryMap).albums!!.items
             searchDatabase.searchDao().insertSearch(response)
             emit(Resource.success(apiService.searchAlbum(queryMap)))
         } else {
             val item = searchDatabase.searchDao().getAllSearch()
-            val albums = Albums("", item, 1, "", 1, "", 1)
-            val searchAlbumResponse = SearchAlbumResponse(albums)
+            val albums = Data("", item, 1, "", 1, "", 1)
+            val searchAlbumResponse = SearchResponse(albums, null, null, null)
             emit(Resource.success(searchAlbumResponse))
         }
     }.catch {
         emit(Resource.failed(it.message.toString()))
     }.flowOn(Dispatchers.IO)
 
-    fun searchArtist(queryMap: HashMap<String, String>): Flow<Resource<ArtistSearchResponse>> =
+    fun searchArtist(queryMap: HashMap<String, String>): Flow<Resource<SearchResponse>> =
         flow {
             emit(Resource.loading())
-            emit(Resource.success(apiService.searchArtist(queryMap)))
+            emit(Resource.success(apiService.searchAlbum(queryMap)))
         }.catch {
             emit(Resource.failed(it.message.toString()))
         }.flowOn(Dispatchers.IO)
 
-    fun searchPlaylist(queryMap: HashMap<String, String>): Flow<Resource<PlaylistSearchResponse>> =
+    fun searchPlaylist(queryMap: HashMap<String, String>): Flow<Resource<SearchResponse>> =
         flow {
             emit(Resource.loading())
-            emit(Resource.success(apiService.searchPlaylist(queryMap)))
+            emit(Resource.success(apiService.searchAlbum(queryMap)))
         }.catch {
             emit(Resource.failed(it.message.toString()))
         }.flowOn(Dispatchers.IO)
 
-    fun searchTrack(queryMap: HashMap<String, String>): Flow<Resource<TracksSearchResponse>> =
+    fun searchTrack(queryMap: HashMap<String, String>): Flow<Resource<SearchResponse>> =
         flow {
             emit(Resource.loading())
-            emit(Resource.success(apiService.searchTracks(queryMap)))
+            emit(Resource.success(apiService.searchAlbum(queryMap)))
         }.catch {
             emit(Resource.failed(it.message.toString()))
         }.flowOn(Dispatchers.IO)

@@ -2,9 +2,6 @@ package com.app.growtaskapplication.data.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.app.growtaskapplication.data.model.album.Artist
-import com.app.growtaskapplication.data.model.tracks.Album
-import com.app.growtaskapplication.data.model.tracks.ExternalIds
 
 @Entity(tableName = "searchResults")
 data class Item(

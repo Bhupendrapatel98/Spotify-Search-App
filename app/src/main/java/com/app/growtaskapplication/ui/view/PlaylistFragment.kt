@@ -12,11 +12,10 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.app.growtaskapplication.R
 import com.app.growtaskapplication.data.model.Item
-import com.app.growtaskapplication.data.model.playlist.PlaylistSearchResponse
+import com.app.growtaskapplication.data.model.SearchResponse
 import com.app.growtaskapplication.databinding.FragmentPlaylistBinding
 import com.app.growtaskapplication.ui.view.adapter.SearchItemAdapter
 import com.app.growtaskapplication.ui.viewmodel.SearchUserViewModel
-import com.app.growtaskapplication.utills.OnItemClick
 import com.app.growtaskapplication.utills.Resource
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.FlowPreview
@@ -26,7 +25,7 @@ import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class PlaylistFragment : Fragment(), OnItemClick {
+class PlaylistFragment : Fragment() {
 
     private lateinit var fragmentPlaylistBinding: FragmentPlaylistBinding
     private var queryMap: HashMap<String, String> = hashMapOf()
@@ -83,18 +82,17 @@ class PlaylistFragment : Fragment(), OnItemClick {
         }
     }
 
-    private fun handleSuccess(data: PlaylistSearchResponse) {
+    private fun handleSuccess(data: SearchResponse) {
         playlistList = data.playlists!!.items.toMutableList()
-        playlistAdapter = SearchItemAdapter(playlistList, context,"playlist",this)
+        playlistAdapter = SearchItemAdapter(playlistList,"playlist",){type,id->
+            val bundle = Bundle()
+            bundle.putString("type", type)
+            bundle.putString("id", id)
+            Navigation.findNavController(fragmentPlaylistBinding.root).navigate(R.id.action_homeFragment_to_artistDetailFragment,bundle)
+        }
         fragmentPlaylistBinding.recyclerView.layoutManager = LinearLayoutManager(context)
         fragmentPlaylistBinding.recyclerView.adapter = playlistAdapter
 
     }
 
-    override fun onClick(type: String, id: String) {
-        val bundle = Bundle()
-        bundle.putString("type", type)
-        bundle.putString("id", id)
-        Navigation.findNavController(fragmentPlaylistBinding.root).navigate(R.id.action_homeFragment_to_artistDetailFragment,bundle)
-    }
 }

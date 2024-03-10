@@ -12,11 +12,10 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.app.growtaskapplication.R
 import com.app.growtaskapplication.data.model.Item
-import com.app.growtaskapplication.data.model.tracks.TracksSearchResponse
+import com.app.growtaskapplication.data.model.SearchResponse
 import com.app.growtaskapplication.databinding.FragmentTrackBinding
 import com.app.growtaskapplication.ui.view.adapter.SearchItemAdapter
 import com.app.growtaskapplication.ui.viewmodel.SearchUserViewModel
-import com.app.growtaskapplication.utills.OnItemClick
 import com.app.growtaskapplication.utills.Resource
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.debounce
@@ -24,7 +23,7 @@ import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.launch
 
-class TrackFragment : Fragment(), OnItemClick {
+class TrackFragment : Fragment() {
 
     private lateinit var fragmentTrackBinding: FragmentTrackBinding
     private var queryMap: HashMap<String, String> = hashMapOf()
@@ -82,17 +81,15 @@ class TrackFragment : Fragment(), OnItemClick {
         }
     }
 
-    private fun handleSuccess(data: TracksSearchResponse) {
+    private fun handleSuccess(data: SearchResponse) {
         tracksList = data.tracks!!.items.toMutableList()
-        trackAdapter = SearchItemAdapter(tracksList, context,"tracks",this)
+        trackAdapter = SearchItemAdapter(tracksList,"tracks",){type,id->
+            val bundle = Bundle()
+            bundle.putString("type", type)
+            bundle.putString("id", id)
+            Navigation.findNavController(fragmentTrackBinding.root).navigate(R.id.action_homeFragment_to_artistDetailFragment,bundle)
+        }
         fragmentTrackBinding.recyclerView.layoutManager = LinearLayoutManager(context)
         fragmentTrackBinding.recyclerView.adapter = trackAdapter
-    }
-
-    override fun onClick(type: String, id: String) {
-        val bundle = Bundle()
-        bundle.putString("type", type)
-        bundle.putString("id", id)
-        Navigation.findNavController(fragmentTrackBinding.root).navigate(R.id.action_homeFragment_to_artistDetailFragment,bundle)
     }
 }

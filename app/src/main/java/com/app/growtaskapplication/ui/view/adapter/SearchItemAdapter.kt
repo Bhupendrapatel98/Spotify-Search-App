@@ -14,11 +14,9 @@ import com.bumptech.glide.Glide
 
 class SearchItemAdapter(
     private val mList: List<Item>,
-    val context: Context?,
     private val viewType: String,
-    private val onItemClick: OnItemClick
-) :
-    RecyclerView.Adapter<SearchItemAdapter.ViewHolder>() {
+    private val onItemClick: (String,String)->Unit
+) : RecyclerView.Adapter<SearchItemAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
@@ -32,12 +30,12 @@ class SearchItemAdapter(
         val singleUnit = mList[position]
 
         if (viewType == "tracks") {
-            if (singleUnit.album!!.images.isNotEmpty()) {
-                Glide.with(context!!).load(singleUnit.album!!.images[0].url).into(holder.imageView)
+            if (singleUnit.album?.images?.isNotEmpty() == true) {
+                Glide.with(holder.imageView.context).load(singleUnit.album.images[0].url).into(holder.imageView)
             }
         } else {
             if (singleUnit.images.isNotEmpty()) {
-                Glide.with(context!!).load(singleUnit.images[0].url).into(holder.imageView)
+                Glide.with(holder.imageView.context).load(singleUnit.images[0].url).into(holder.imageView)
             }
         }
 
@@ -54,16 +52,16 @@ class SearchItemAdapter(
             }
             "playlist" -> {
                 holder.artistName.text = singleUnit.description
-                holder.releaseDate.text = singleUnit.owner!!.display_name
+                holder.releaseDate.text = singleUnit.owner?.display_name
             }
             "tracks" -> {
                 holder.artistName.text = singleUnit.artists[0].name
-                holder.releaseDate.text = singleUnit.album!!.release_date
+                holder.releaseDate.text = singleUnit.album?.release_date
             }
         }
 
         holder.itemView.setOnClickListener {
-            onItemClick.onClick(viewType, singleUnit.id)
+            onItemClick(viewType, singleUnit.id)
         }
     }
 

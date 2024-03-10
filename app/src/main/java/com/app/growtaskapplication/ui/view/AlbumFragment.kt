@@ -13,13 +13,12 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.app.growtaskapplication.R
 import com.app.growtaskapplication.data.model.Item
-import com.app.growtaskapplication.data.model.album.SearchAlbumResponse
+import com.app.growtaskapplication.data.model.SearchResponse
 import com.app.growtaskapplication.ui.view.adapter.SearchItemAdapter
 import com.app.growtaskapplication.databinding.FragmentAlbumBinding
 import com.app.growtaskapplication.ui.viewmodel.SearchUserViewModel
 import com.app.growtaskapplication.utills.Resource
 import com.app.growtaskapplication.utills.NetworkUtils
-import com.app.growtaskapplication.utills.OnItemClick
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.*
@@ -27,7 +26,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class AlbumFragment : Fragment(), OnItemClick {
+class AlbumFragment : Fragment() {
     private lateinit var fragmentAlbumBinding: FragmentAlbumBinding
     private lateinit var albumAdapter: SearchItemAdapter
     private var queryMap: HashMap<String, String> = hashMapOf()
@@ -76,6 +75,7 @@ class AlbumFragment : Fragment(), OnItemClick {
 
 
     private fun attachObservers() {
+
         lifecycleScope.launch {
             searchUserViewModel.albums.collect {
                 when (it) {
@@ -94,18 +94,17 @@ class AlbumFragment : Fragment(), OnItemClick {
         }
     }
 
-    private fun handleSuccess(data: SearchAlbumResponse) {
+    private fun handleSuccess(data: SearchResponse) {
         albumList = data.albums!!.items.toMutableList()
-        albumAdapter = SearchItemAdapter(albumList, context, "album", this)
+        albumAdapter = SearchItemAdapter(albumList, "album", ){type,id->
+            val bundle = Bundle()
+            bundle.putString("type", type)
+            bundle.putString("id", id)
+            Navigation.findNavController(fragmentAlbumBinding.root)
+                .navigate(R.id.action_homeFragment_to_artistDetailFragment, bundle)
+        }
         fragmentAlbumBinding.recyclerView.layoutManager = LinearLayoutManager(context)
         fragmentAlbumBinding.recyclerView.adapter = albumAdapter
     }
 
-    override fun onClick(type: String, id: String) {
-        val bundle = Bundle()
-        bundle.putString("type", type)
-        bundle.putString("id", id)
-        Navigation.findNavController(fragmentAlbumBinding.root)
-            .navigate(R.id.action_homeFragment_to_artistDetailFragment, bundle)
-    }
 }

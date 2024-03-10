@@ -2,10 +2,6 @@ package com.app.growtaskapplication.data.local
 
 import androidx.room.TypeConverter
 import com.app.growtaskapplication.data.model.*
-import com.app.growtaskapplication.data.model.album.Artist
-import com.app.growtaskapplication.data.model.tracks.Album
-import com.app.growtaskapplication.data.model.tracks.ArtistX
-import com.app.growtaskapplication.data.model.tracks.ExternalUrlsXXX
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 

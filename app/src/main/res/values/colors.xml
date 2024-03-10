@@ -10,4 +10,6 @@
     <color name="metal_blue">#32527B</color>
     <color name="green">#4CAF50</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="transparent">#00ffffff</color>
+
 </resources>

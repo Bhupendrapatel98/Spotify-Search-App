@@ -1,11 +1,10 @@
 package com.app.growtaskapplication.ui.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.app.growtaskapplication.data.model.album.SearchAlbumResponse
-import com.app.growtaskapplication.data.model.artist.ArtistSearchResponse
-import com.app.growtaskapplication.data.model.playlist.PlaylistSearchResponse
-import com.app.growtaskapplication.data.model.tracks.TracksSearchResponse
+import com.app.growtaskapplication.data.model.Data
+import com.app.growtaskapplication.data.model.SearchResponse
 import com.app.growtaskapplication.data.repository.SearchUserRepository
 import com.app.growtaskapplication.utills.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -19,17 +18,17 @@ class SearchUserViewModel @Inject constructor(private val repository: SearchUser
 
     val searchFlowQuery = MutableStateFlow("")
 
-    private val _albums = MutableStateFlow<Resource<SearchAlbumResponse>?>(null)
-    val albums: StateFlow<Resource<SearchAlbumResponse>?> = _albums
+    private val _albums = MutableStateFlow<Resource<SearchResponse>?>(null)
+    val albums: StateFlow<Resource<SearchResponse>?> = _albums
 
-    private val _artist = MutableStateFlow<Resource<ArtistSearchResponse>?>(null)
-    val artist: StateFlow<Resource<ArtistSearchResponse>?> = _artist
+    private val _artist = MutableStateFlow<Resource<SearchResponse>?>(null)
+    val artist: StateFlow<Resource<SearchResponse>?> = _artist
 
-    private val _playlist = MutableStateFlow<Resource<PlaylistSearchResponse>?>(null)
-    val playlist: StateFlow<Resource<PlaylistSearchResponse>?> = _playlist
+    private val _playlist = MutableStateFlow<Resource<SearchResponse>?>(null)
+    val playlist: StateFlow<Resource<SearchResponse>?> = _playlist
 
-    private val _track = MutableStateFlow<Resource<TracksSearchResponse>?>(null)
-    val track: StateFlow<Resource<TracksSearchResponse>?> = _track
+    private val _track = MutableStateFlow<Resource<SearchResponse>?>(null)
+    val track: StateFlow<Resource<SearchResponse>?> = _track
 
     fun searchAlbum(queryMap: HashMap<String, String>) {
         viewModelScope.launch {
