@@ -1,6 +1,7 @@
 package com.app.growtaskapplication.ui.view
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +13,7 @@ import com.app.growtaskapplication.data.model.Item
 import com.app.growtaskapplication.databinding.FragmentArtistDetailBinding
 import com.app.growtaskapplication.ui.viewmodel.UserDetailViewModel
 import com.app.growtaskapplication.utills.Resource
+import com.app.growtaskapplication.utills.UserType
 import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -21,13 +23,12 @@ class ArtistDetailFragment : Fragment() {
     private lateinit var fragmentArtistDetailBinding: FragmentArtistDetailBinding
     private val userDetailViewModel: UserDetailViewModel by viewModels()
     private lateinit var type: String
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?): View? {
         fragmentArtistDetailBinding = FragmentArtistDetailBinding.inflate(inflater, container, false)
 
-        arguments?.let {
+        arguments?.let { it ->
             val id = it.getString("id")
             type = it.getString("type").toString()
             userDetailViewModel.getUserDetail(id!!, type)
@@ -59,7 +60,7 @@ class ArtistDetailFragment : Fragment() {
 
     private fun handleSuccessResponse(item: Item) {
 
-        if (type == "tracks") {
+        if (type == UserType.TRACKS.type) {
             if (item.album!!.images.isNotEmpty()) {
                 Glide.with(context!!).load(item.album!!.images[0].url)
                     .into(fragmentArtistDetailBinding.image)
@@ -74,19 +75,19 @@ class ArtistDetailFragment : Fragment() {
         fragmentArtistDetailBinding.name.text = item.name
 
         when (type) {
-            "artist" -> {
+            UserType.ARTIST.type -> {
                 fragmentArtistDetailBinding.artistName.text = "${item.followers?.total} followers"
                 fragmentArtistDetailBinding.releaseDate.text = "${item.popularity} Popularity"
             }
-            "album" -> {
+            UserType.ALBUM.type -> {
                 fragmentArtistDetailBinding.artistName.text = item.artists[0].name
                 fragmentArtistDetailBinding.releaseDate.text = item.release_date
             }
-            "playlist" -> {
+            UserType.PLAYLIST.type -> {
                 fragmentArtistDetailBinding.artistName.text = item.description
                 fragmentArtistDetailBinding.releaseDate.text = item.owner!!.display_name
             }
-            "tracks" -> {
+            UserType.TRACKS.type -> {
                 fragmentArtistDetailBinding.artistName.text = item.artists[0].name
                 fragmentArtistDetailBinding.releaseDate.text = item.album!!.release_date
             }

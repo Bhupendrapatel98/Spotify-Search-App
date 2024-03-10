@@ -17,6 +17,7 @@ import com.app.growtaskapplication.databinding.FragmentPlaylistBinding
 import com.app.growtaskapplication.ui.view.adapter.SearchItemAdapter
 import com.app.growtaskapplication.ui.viewmodel.SearchUserViewModel
 import com.app.growtaskapplication.utills.Resource
+import com.app.growtaskapplication.utills.UserType
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.debounce
@@ -61,7 +62,7 @@ class PlaylistFragment : Fragment() {
         queryMap["locale"] = "en-US"
         queryMap["offset"] = "0"
         queryMap["limit"] = "20"
-        searchUserViewModel.searchPlaylist(queryMap)
+        searchUserViewModel.searchAlbum(queryMap, UserType.PLAYLIST)
     }
 
     private fun attachObservers() {
@@ -84,9 +85,9 @@ class PlaylistFragment : Fragment() {
 
     private fun handleSuccess(data: SearchResponse) {
         playlistList = data.playlists!!.items.toMutableList()
-        playlistAdapter = SearchItemAdapter(playlistList,"playlist",){type,id->
+        playlistAdapter = SearchItemAdapter(playlistList,UserType.PLAYLIST,){ type, id->
             val bundle = Bundle()
-            bundle.putString("type", type)
+            bundle.putString("type", type.type)
             bundle.putString("id", id)
             Navigation.findNavController(fragmentPlaylistBinding.root).navigate(R.id.action_homeFragment_to_artistDetailFragment,bundle)
         }

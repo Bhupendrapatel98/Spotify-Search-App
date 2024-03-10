@@ -19,6 +19,7 @@ import com.app.growtaskapplication.databinding.FragmentAlbumBinding
 import com.app.growtaskapplication.ui.viewmodel.SearchUserViewModel
 import com.app.growtaskapplication.utills.Resource
 import com.app.growtaskapplication.utills.NetworkUtils
+import com.app.growtaskapplication.utills.UserType
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.*
@@ -70,7 +71,7 @@ class AlbumFragment : Fragment() {
         queryMap["locale"] = "en-US"
         queryMap["offset"] = "0"
         queryMap["limit"] = "20"
-        searchUserViewModel.searchAlbum(queryMap)
+        searchUserViewModel.searchAlbum(queryMap, UserType.ALBUM)
     }
 
 
@@ -96,9 +97,9 @@ class AlbumFragment : Fragment() {
 
     private fun handleSuccess(data: SearchResponse) {
         albumList = data.albums!!.items.toMutableList()
-        albumAdapter = SearchItemAdapter(albumList, "album", ){type,id->
+        albumAdapter = SearchItemAdapter(albumList, UserType.ALBUM ){ type, id->
             val bundle = Bundle()
-            bundle.putString("type", type)
+            bundle.putString("type", type.type)
             bundle.putString("id", id)
             Navigation.findNavController(fragmentAlbumBinding.root)
                 .navigate(R.id.action_homeFragment_to_artistDetailFragment, bundle)

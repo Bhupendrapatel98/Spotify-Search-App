@@ -1,7 +1,6 @@
 package com.app.growtaskapplication.ui.view
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,6 +17,7 @@ import com.app.growtaskapplication.databinding.FragmentArtistBinding
 import com.app.growtaskapplication.ui.view.adapter.SearchItemAdapter
 import com.app.growtaskapplication.ui.viewmodel.SearchUserViewModel
 import com.app.growtaskapplication.utills.Resource
+import com.app.growtaskapplication.utills.UserType
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.debounce
@@ -37,31 +37,36 @@ class ArtistFragment : Fragment() {
     @OptIn(FlowPreview::class)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?): View? {
+        savedInstanceState: Bundle?
+    ): View? {
         fragmentArtistBinding = FragmentArtistBinding.inflate(inflater, container, false)
 
         lifecycleScope.launch {
             searchUserViewModel.searchFlowQuery.debounce(500)
                 .distinctUntilChanged()
-                .filter {query->
+                .filter { query ->
                     return@filter query.isNotEmpty()
                 }.collect {
-                searchAlbum(it)
-            }
+                    searchAlbum(it)
+                }
         }
 
         attachObservers()
+        setUpAdapter()
 
-        artistAdapter = SearchItemAdapter(artistList,"artist"){ type, id->
+        return fragmentArtistBinding.root
+    }
+
+    private fun setUpAdapter() {
+        artistAdapter = SearchItemAdapter(artistList, UserType.ARTIST) { type, id ->
             val bundle = Bundle()
-            bundle.putString("type", type)
+            bundle.putString("type", type.type)
             bundle.putString("id", id)
-            Navigation.findNavController(fragmentArtistBinding.root).navigate(R.id.action_homeFragment_to_artistDetailFragment,bundle)
+            Navigation.findNavController(fragmentArtistBinding.root)
+                .navigate(R.id.action_homeFragment_to_artistDetailFragment, bundle)
         }
         fragmentArtistBinding.recyclerView.layoutManager = LinearLayoutManager(context)
         fragmentArtistBinding.recyclerView.adapter = artistAdapter
-
-        return fragmentArtistBinding.root
     }
 
     private fun searchAlbum(str: String) {
@@ -70,8 +75,7 @@ class ArtistFragment : Fragment() {
         queryMap["locale"] = "en-US"
         queryMap["offset"] = "0"
         queryMap["limit"] = "20"
-        searchUserViewModel.searchArtist(queryMap)
-       // searchUserViewModel.searchAlbum(queryMap,"artist")
+        searchUserViewModel.searchAlbum(queryMap, UserType.ARTIST)
     }
 
     private fun attachObservers() {
@@ -79,18 +83,18 @@ class ArtistFragment : Fragment() {
             searchUserViewModel.artist.collect {
                 when (it) {
                     is Resource.Loading -> {
-                      //  ProgressDialog.show(context!!)
+                        //  ProgressDialog.show(context!!)
                     }
                     is Resource.Failed -> {
-                       // ProgressDialog.dismiss()
+                        // ProgressDialog.dismiss()
                         Toast.makeText(context, it.message, Toast.LENGTH_SHORT).show()
                     }
                     is Resource.Success -> {
-                      //  ProgressDialog.dismiss()
+                        //  ProgressDialog.dismiss()
                         handleSuccess(it.data)
                     }
                     else -> {
-                      //  ProgressDialog.dismiss()
+                        //  ProgressDialog.dismiss()
                     }
                 }
             }

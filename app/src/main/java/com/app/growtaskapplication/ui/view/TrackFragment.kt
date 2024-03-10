@@ -17,6 +17,7 @@ import com.app.growtaskapplication.databinding.FragmentTrackBinding
 import com.app.growtaskapplication.ui.view.adapter.SearchItemAdapter
 import com.app.growtaskapplication.ui.viewmodel.SearchUserViewModel
 import com.app.growtaskapplication.utills.Resource
+import com.app.growtaskapplication.utills.UserType
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.flow.distinctUntilChanged
@@ -60,7 +61,7 @@ class TrackFragment : Fragment() {
         queryMap["locale"] = "en-US"
         queryMap["offset"] = "0"
         queryMap["limit"] = "20"
-        searchUserViewModel.searchTrack(queryMap)
+        searchUserViewModel.searchAlbum(queryMap, UserType.TRACKS)
     }
 
     private fun attachObservers() {
@@ -83,9 +84,9 @@ class TrackFragment : Fragment() {
 
     private fun handleSuccess(data: SearchResponse) {
         tracksList = data.tracks!!.items.toMutableList()
-        trackAdapter = SearchItemAdapter(tracksList,"tracks",){type,id->
+        trackAdapter = SearchItemAdapter(tracksList,UserType.TRACKS){ type, id->
             val bundle = Bundle()
-            bundle.putString("type", type)
+            bundle.putString("type", type.type)
             bundle.putString("id", id)
             Navigation.findNavController(fragmentTrackBinding.root).navigate(R.id.action_homeFragment_to_artistDetailFragment,bundle)
         }
