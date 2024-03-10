@@ -87,5 +87,6 @@ class AppModule {
     @Singleton
     fun provideDatabase(app: Application) : SearchDatabase =
         Room.databaseBuilder(app, SearchDatabase::class.java, "search_database")
+            .fallbackToDestructiveMigration()
             .build()
 }

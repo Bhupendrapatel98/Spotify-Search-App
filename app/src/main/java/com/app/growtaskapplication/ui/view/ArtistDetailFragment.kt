@@ -146,8 +146,8 @@ class ArtistDetailFragment : Fragment() {
     private fun handleSuccessResponse(item: Item) {
 
         if (type == "tracks") {
-            if (item.album.images.isNotEmpty()) {
-                Glide.with(context!!).load(item.album.images[0].url)
+            if (item.album!!.images.isNotEmpty()) {
+                Glide.with(context!!).load(item.album!!.images[0].url)
                     .into(fragmentArtistDetailBinding.image)
             }
         } else {
@@ -161,7 +161,7 @@ class ArtistDetailFragment : Fragment() {
 
         when (type) {
             "artist" -> {
-                fragmentArtistDetailBinding.artistName.text = "${item.followers.total} followers"
+                fragmentArtistDetailBinding.artistName.text = "${item.followers?.total} followers"
                 fragmentArtistDetailBinding.releaseDate.text = "${item.popularity} Popularity"
             }
             "album" -> {
@@ -170,11 +170,11 @@ class ArtistDetailFragment : Fragment() {
             }
             "playlist" -> {
                 fragmentArtistDetailBinding.artistName.text = item.description
-                fragmentArtistDetailBinding.releaseDate.text = item.owner.display_name
+                fragmentArtistDetailBinding.releaseDate.text = item.owner!!.display_name
             }
             "tracks" -> {
                 fragmentArtistDetailBinding.artistName.text = item.artists[0].name
-                fragmentArtistDetailBinding.releaseDate.text = item.album.release_date
+                fragmentArtistDetailBinding.releaseDate.text = item.album!!.release_date
             }
         }
 

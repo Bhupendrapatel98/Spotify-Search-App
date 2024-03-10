@@ -58,13 +58,13 @@ class HomeFragment : Fragment(), TokenRefreshService {
     }
 
     private fun callGetTokeApi() {
-        if (tokenManager.getToken().isNullOrEmpty()) {
+      //  if (tokenManager.getToken().isNullOrEmpty()) {
             tokenViewModel.getToken(
                 Constants.CLIENT_CREDENTIAL,
                 Constants.CLIENT_ID,
                 Constants.CLIENT_SECRET
             )
-        }
+     //   }
     }
 
     private fun observeToken() {

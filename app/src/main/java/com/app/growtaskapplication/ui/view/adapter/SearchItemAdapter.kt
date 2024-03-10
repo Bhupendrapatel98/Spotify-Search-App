@@ -32,8 +32,8 @@ class SearchItemAdapter(
         val singleUnit = mList[position]
 
         if (viewType == "tracks") {
-            if (singleUnit.album.images.isNotEmpty()) {
-                Glide.with(context!!).load(singleUnit.album.images[0].url).into(holder.imageView)
+            if (singleUnit.album!!.images.isNotEmpty()) {
+                Glide.with(context!!).load(singleUnit.album!!.images[0].url).into(holder.imageView)
             }
         } else {
             if (singleUnit.images.isNotEmpty()) {
@@ -45,7 +45,7 @@ class SearchItemAdapter(
 
         when (viewType) {
             "artist" -> {
-                holder.artistName.text = "${singleUnit.followers.total.toString()} followers"
+                holder.artistName.text = "${singleUnit.followers?.total.toString()} followers"
                 holder.releaseDate.text = "${singleUnit.popularity.toString()} Popularity"
             }
             "album" -> {
@@ -54,11 +54,11 @@ class SearchItemAdapter(
             }
             "playlist" -> {
                 holder.artistName.text = singleUnit.description
-                holder.releaseDate.text = singleUnit.owner.display_name
+                holder.releaseDate.text = singleUnit.owner!!.display_name
             }
             "tracks" -> {
                 holder.artistName.text = singleUnit.artists[0].name
-                holder.releaseDate.text = singleUnit.album.release_date
+                holder.releaseDate.text = singleUnit.album!!.release_date
             }
         }
 
