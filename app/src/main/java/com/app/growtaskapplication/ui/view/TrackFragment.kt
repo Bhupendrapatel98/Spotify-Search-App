@@ -5,7 +5,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.Navigation
@@ -27,7 +26,6 @@ import kotlinx.coroutines.launch
 class TrackFragment : Fragment() {
 
     private lateinit var fragmentTrackBinding: FragmentTrackBinding
-    private var queryMap: HashMap<String, String> = hashMapOf()
     private var tracksList: MutableList<Item> = mutableListOf()
     private lateinit var trackAdapter: SearchItemAdapter
     private val searchUserViewModel: SearchUserViewModel by activityViewModels()
@@ -44,10 +42,10 @@ class TrackFragment : Fragment() {
                 .distinctUntilChanged()
                 .filter {query->
                     return@filter query.isNotEmpty()
+                }.collect {
+                    searchUserViewModel.search(UserType.TRACKS)
+
                 }
-                .collect {
-                searchTrack(it)
-            }
         }
 
         attachObservers()
@@ -55,28 +53,22 @@ class TrackFragment : Fragment() {
         return fragmentTrackBinding.root
     }
 
-    private fun searchTrack(str: String) {
-        queryMap["query"] = str
-        queryMap["type"] = "track"
-        queryMap["locale"] = "en-US"
-        queryMap["offset"] = "0"
-        queryMap["limit"] = "20"
-        searchUserViewModel.searchAlbum(queryMap, UserType.TRACKS)
-    }
-
     private fun attachObservers() {
         lifecycleScope.launch {
             searchUserViewModel.track.collect {
                 when (it) {
                     is Resource.Loading -> {
+                        //show Loader
                     }
                     is Resource.Failed -> {
-                        Toast.makeText(context, it.message, Toast.LENGTH_SHORT).show()
+                        //handle failure
                     }
                     is Resource.Success -> {
                         handleSuccess(it.data)
                     }
-                    else -> {}
+                    else -> {
+                        //handle else
+                    }
                 }
             }
         }

@@ -1,12 +1,10 @@
 package com.app.growtaskapplication.ui.view
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.Navigation
@@ -30,7 +28,6 @@ import javax.inject.Inject
 class AlbumFragment : Fragment() {
     private lateinit var fragmentAlbumBinding: FragmentAlbumBinding
     private lateinit var albumAdapter: SearchItemAdapter
-    private var queryMap: HashMap<String, String> = hashMapOf()
     private var albumList: MutableList<Item> = mutableListOf()
     private val searchUserViewModel: SearchUserViewModel by activityViewModels()
 
@@ -44,36 +41,17 @@ class AlbumFragment : Fragment() {
     ): View? {
         fragmentAlbumBinding = FragmentAlbumBinding.inflate(inflater, container, false)
 
-
         lifecycleScope.launch {
             searchUserViewModel.searchFlowQuery.debounce(500)
                 .distinctUntilChanged()
-                .filter { query ->
-                    return@filter query.isNotEmpty()
-                }.collect {
-                    if (networkUtils.isInterNetAvailable()) {
-                        searchAlbum(it)
-                    }
+                .collect {
+                    searchUserViewModel.search(UserType.ALBUM)
                 }
-        }
-
-        if (!networkUtils.isInterNetAvailable()) {
-            searchAlbum("")
         }
 
         attachObservers()
         return fragmentAlbumBinding.root
     }
-
-    private fun searchAlbum(str: String) {
-        queryMap["query"] = str
-        queryMap["type"] = "album"
-        queryMap["locale"] = "en-US"
-        queryMap["offset"] = "0"
-        queryMap["limit"] = "20"
-        searchUserViewModel.searchAlbum(queryMap, UserType.ALBUM)
-    }
-
 
     private fun attachObservers() {
 
@@ -81,12 +59,12 @@ class AlbumFragment : Fragment() {
             searchUserViewModel.albums.collect {
                 when (it) {
                     is Resource.Loading -> {
+                        //show loader
                     }
                     is Resource.Failed -> {
-                        Toast.makeText(context, it.message, Toast.LENGTH_SHORT).show()
+                        //handle failure
                     }
                     is Resource.Success -> {
-                        Log.d("Success", "attachObservers: " + it.data)
                         handleSuccess(it.data)
                     }
                     else -> {}
@@ -97,7 +75,7 @@ class AlbumFragment : Fragment() {
 
     private fun handleSuccess(data: SearchResponse) {
         albumList = data.albums!!.items.toMutableList()
-        albumAdapter = SearchItemAdapter(albumList, UserType.ALBUM ){ type, id->
+        albumAdapter = SearchItemAdapter(albumList, UserType.ALBUM) { type, id ->
             val bundle = Bundle()
             bundle.putString("type", type.type)
             bundle.putString("id", id)

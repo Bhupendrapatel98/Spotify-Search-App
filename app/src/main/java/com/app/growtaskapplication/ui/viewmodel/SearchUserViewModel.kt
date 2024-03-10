@@ -11,9 +11,11 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
+import kotlin.collections.HashMap
 
 @HiltViewModel
-class SearchUserViewModel @Inject constructor(private val repository: SearchUserRepository) : ViewModel() {
+class SearchUserViewModel @Inject constructor(private val repository: SearchUserRepository) :
+    ViewModel() {
 
     val searchFlowQuery = MutableStateFlow("")
 
@@ -29,22 +31,27 @@ class SearchUserViewModel @Inject constructor(private val repository: SearchUser
     private val _track = MutableStateFlow<Resource<SearchResponse>?>(null)
     val track: StateFlow<Resource<SearchResponse>?> = _track
 
-    fun searchAlbum(queryMap: HashMap<String, String>,type:UserType) {
+    fun search(type: UserType) {
         viewModelScope.launch {
-            repository.searchAlbum(queryMap).collect{
-                when (type) {
-                    UserType.ALBUM -> repository.searchAlbum(queryMap).collect {
-                        _albums.value = it
-                    }
-                    UserType.ARTIST -> repository.searchArtist(queryMap).collect {
-                        _artist.value = it
-                    }
-                    UserType.PLAYLIST -> repository.searchPlaylist(queryMap).collect {
-                        _playlist.value = it
-                    }
-                    UserType.TRACKS -> repository.searchTrack(queryMap).collect {
-                        _track.value = it
-                    }
+            val queryMap = HashMap<String, String>()
+            queryMap["query"] = searchFlowQuery.value
+            queryMap["type"] = type.type
+            queryMap["locale"] = "en-US"
+            queryMap["offset"] = "0"
+            queryMap["limit"] = "20"
+
+            when (type) {
+                UserType.ALBUM -> repository.searchAlbum(queryMap).collect {
+                    _albums.value = it
+                }
+                UserType.ARTIST -> repository.searchArtist(queryMap).collect {
+                    _artist.value = it
+                }
+                UserType.PLAYLIST -> repository.searchPlaylist(queryMap).collect {
+                    _playlist.value = it
+                }
+                UserType.TRACKS -> repository.searchTrack(queryMap).collect {
+                    _track.value = it
                 }
             }
         }

@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import com.app.growtaskapplication.R
 import com.app.growtaskapplication.databinding.FragmentHomeBinding
 import com.app.growtaskapplication.ui.viewmodel.SearchUserViewModel
 import com.app.growtaskapplication.ui.viewmodel.token.GetTokenViewModel
@@ -59,13 +60,13 @@ class HomeFragment : Fragment() {
             tokenViewModel.token.collect {
                 when (it) {
                     is Resource.Loading -> {
-                        //Toast.makeText(context, "Load", Toast.LENGTH_SHORT).show();
+                        //show Loader
                     }
                     is Resource.Success -> {
                         tokenManager.saveToken(it.data.access_token)
                     }
                     is Resource.Failed -> {
-                        Toast.makeText(context, it.message, Toast.LENGTH_SHORT).show()
+                        //handle failure
                     }
                 }
             }
@@ -97,10 +98,10 @@ class HomeFragment : Fragment() {
             fragmentHomeBinding.viewpager
         ) { tab, position ->
             when (position) {
-                0 -> tab.text = "Artist"
-                1 -> tab.text = "Album"
-                2 -> tab.text = "Playlist"
-                3 -> tab.text = "Track"
+                0 -> tab.text = getString(R.string.album)
+                1 -> tab.text = getString(R.string.artist)
+                2 -> tab.text = getString(R.string.playlist)
+                3 -> tab.text = getString(R.string.track)
             }
         }.attach()
     }

@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
@@ -29,7 +28,6 @@ import kotlinx.coroutines.launch
 class ArtistFragment : Fragment() {
 
     lateinit var fragmentArtistBinding: FragmentArtistBinding
-    private var queryMap: HashMap<String, String> = hashMapOf()
     private var artistList: MutableList<Item> = mutableListOf()
     private lateinit var artistAdapter: SearchItemAdapter
     private val searchUserViewModel: SearchUserViewModel by activityViewModels()
@@ -47,7 +45,7 @@ class ArtistFragment : Fragment() {
                 .filter { query ->
                     return@filter query.isNotEmpty()
                 }.collect {
-                    searchAlbum(it)
+                    searchUserViewModel.search(UserType.ARTIST)
                 }
         }
 
@@ -69,32 +67,21 @@ class ArtistFragment : Fragment() {
         fragmentArtistBinding.recyclerView.adapter = artistAdapter
     }
 
-    private fun searchAlbum(str: String) {
-        queryMap["query"] = str
-        queryMap["type"] = "artist"
-        queryMap["locale"] = "en-US"
-        queryMap["offset"] = "0"
-        queryMap["limit"] = "20"
-        searchUserViewModel.searchAlbum(queryMap, UserType.ARTIST)
-    }
-
     private fun attachObservers() {
         lifecycleScope.launch {
             searchUserViewModel.artist.collect {
                 when (it) {
                     is Resource.Loading -> {
-                        //  ProgressDialog.show(context!!)
+                        // show Loader
                     }
                     is Resource.Failed -> {
-                        // ProgressDialog.dismiss()
-                        Toast.makeText(context, it.message, Toast.LENGTH_SHORT).show()
+                        //handle failure
                     }
                     is Resource.Success -> {
-                        //  ProgressDialog.dismiss()
                         handleSuccess(it.data)
                     }
                     else -> {
-                        //  ProgressDialog.dismiss()
+                        // handle else
                     }
                 }
             }

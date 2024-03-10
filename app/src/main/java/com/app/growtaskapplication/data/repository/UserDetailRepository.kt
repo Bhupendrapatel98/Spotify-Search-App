@@ -3,6 +3,7 @@ package com.app.growtaskapplication.data.repository
 import com.app.growtaskapplication.data.api.ApiService
 import com.app.growtaskapplication.data.model.Item
 import com.app.growtaskapplication.utills.Resource
+import com.app.growtaskapplication.utills.UserType
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
@@ -15,16 +16,16 @@ class UserDetailRepository @Inject constructor(@Named("commonService") val apiSe
     fun getUserDetail(userId: String,type:String): Flow<Resource<Item>> = flow {
         emit(Resource.loading())
         when (type) {
-            "artist" -> {
+            UserType.ARTIST.type -> {
                 emit(Resource.success(apiService.getArtist(userId)))
             }
-            "album" -> {
+            UserType.ALBUM.type -> {
                 emit(Resource.success(apiService.getAlbum(userId)))
             }
-            "playlist" -> {
+            UserType.PLAYLIST.type -> {
                 emit(Resource.success(apiService.getPlayList(userId)))
             }
-            "tracks" -> {
+            UserType.TRACKS.type -> {
                 emit(Resource.success(apiService.getTracks(userId)))
             }
         }

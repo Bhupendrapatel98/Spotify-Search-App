@@ -14,8 +14,8 @@ class ViewPagerAdapter(fragmentActivity: FragmentActivity) : FragmentStateAdapte
 
     override fun createFragment(position: Int): Fragment {
         return when (position) {
-            0 -> ArtistFragment()
-            1 -> AlbumFragment()
+            0 -> AlbumFragment()
+            1 -> ArtistFragment()
             2 -> PlaylistFragment()
             3 -> TrackFragment()
             else -> throw IllegalArgumentException("Invalid position: $position")

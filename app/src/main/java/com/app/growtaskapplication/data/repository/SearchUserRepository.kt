@@ -1,11 +1,14 @@
 package com.app.growtaskapplication.data.repository
 
+import android.util.Log
 import com.app.growtaskapplication.data.api.ApiService
 import com.app.growtaskapplication.data.local.SearchDatabase
 import com.app.growtaskapplication.data.model.Data
+import com.app.growtaskapplication.data.model.Item
 import com.app.growtaskapplication.data.model.SearchResponse
 import com.app.growtaskapplication.utills.NetworkUtils
 import com.app.growtaskapplication.utills.Resource
+import com.app.growtaskapplication.utills.UserType
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
@@ -22,8 +25,7 @@ class SearchUserRepository @Inject constructor(
 
     fun searchAlbum(queryMap: HashMap<String, String>): Flow<Resource<SearchResponse>> = flow {
         emit(Resource.loading())
-
-        if (networkUtils.isInterNetAvailable()) {
+        if (networkUtils.isInterNetAvailable() && queryMap["query"].toString().isNotEmpty()) {
             searchDatabase.searchDao().clearData()
             val response = apiService.searchAlbum(queryMap).albums!!.items
             searchDatabase.searchDao().insertSearch(response)
@@ -31,7 +33,7 @@ class SearchUserRepository @Inject constructor(
         } else {
             val item = searchDatabase.searchDao().getAllSearch()
             val albums = Data("", item, 1, "", 1, "", 1)
-            val searchAlbumResponse = SearchResponse(albums, null, null, null)
+            val searchAlbumResponse = SearchResponse(null, albums, null, null)
             emit(Resource.success(searchAlbumResponse))
         }
     }.catch {

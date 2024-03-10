@@ -5,7 +5,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.Navigation
@@ -29,7 +28,6 @@ import kotlinx.coroutines.launch
 class PlaylistFragment : Fragment() {
 
     private lateinit var fragmentPlaylistBinding: FragmentPlaylistBinding
-    private var queryMap: HashMap<String, String> = hashMapOf()
     private var playlistList: MutableList<Item> = mutableListOf()
     private lateinit var playlistAdapter: SearchItemAdapter
     private val searchUserViewModel: SearchUserViewModel by activityViewModels()
@@ -47,8 +45,8 @@ class PlaylistFragment : Fragment() {
                 .filter {query->
                     return@filter query.isNotEmpty()
                 }.collect {
-                searchPlaylist(it)
-            }
+                    searchUserViewModel.search(UserType.PLAYLIST)
+                }
         }
 
         attachObservers()
@@ -56,28 +54,22 @@ class PlaylistFragment : Fragment() {
         return fragmentPlaylistBinding.root
     }
 
-    private fun searchPlaylist(str: String) {
-        queryMap["query"] = str
-        queryMap["type"] = "playlist"
-        queryMap["locale"] = "en-US"
-        queryMap["offset"] = "0"
-        queryMap["limit"] = "20"
-        searchUserViewModel.searchAlbum(queryMap, UserType.PLAYLIST)
-    }
-
     private fun attachObservers() {
         lifecycleScope.launch {
             searchUserViewModel.playlist.collect {
                 when (it) {
                     is Resource.Loading -> {
+                        //show Loader
                     }
                     is Resource.Failed -> {
-                        Toast.makeText(context, it.message, Toast.LENGTH_SHORT).show()
+                       //handle failure
                     }
                     is Resource.Success -> {
                         handleSuccess(it.data)
                     }
-                    else -> {}
+                    else -> {
+                        //handle else
+                    }
                 }
             }
         }
