@@ -15,22 +15,24 @@ import com.app.growtaskapplication.data.model.Item
 import com.app.growtaskapplication.data.model.playlist.PlaylistSearchResponse
 import com.app.growtaskapplication.databinding.FragmentPlaylistBinding
 import com.app.growtaskapplication.ui.view.adapter.SearchItemAdapter
-import com.app.growtaskapplication.ui.viewmodel.playlist.PlaylistViewModel
+import com.app.growtaskapplication.ui.viewmodel.SearchUserViewModel
 import com.app.growtaskapplication.utills.OnItemClick
 import com.app.growtaskapplication.utills.Resource
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class PlaylistFragment : Fragment(), OnItemClick {
 
     private lateinit var fragmentPlaylistBinding: FragmentPlaylistBinding
     private var queryMap: HashMap<String, String> = hashMapOf()
     private var playlistList: MutableList<Item> = mutableListOf()
     private lateinit var playlistAdapter: SearchItemAdapter
-    private val playlistViewModel: PlaylistViewModel by activityViewModels()
+    private val searchUserViewModel: SearchUserViewModel by activityViewModels()
 
     @OptIn(FlowPreview::class)
     override fun onCreateView(
@@ -40,7 +42,7 @@ class PlaylistFragment : Fragment(), OnItemClick {
         fragmentPlaylistBinding = FragmentPlaylistBinding.inflate(inflater, container, false)
 
         lifecycleScope.launch {
-            playlistViewModel.searchFlowQuery.debounce(500)
+            searchUserViewModel.searchFlowQuery.debounce(500)
                 .distinctUntilChanged()
                 .filter {query->
                     return@filter query.isNotEmpty()
@@ -60,12 +62,12 @@ class PlaylistFragment : Fragment(), OnItemClick {
         queryMap["locale"] = "en-US"
         queryMap["offset"] = "0"
         queryMap["limit"] = "20"
-        playlistViewModel.searchPlaylist(queryMap)
+        searchUserViewModel.searchPlaylist(queryMap)
     }
 
     private fun attachObservers() {
         lifecycleScope.launch {
-            playlistViewModel.playlist.collect {
+            searchUserViewModel.playlist.collect {
                 when (it) {
                     is Resource.Loading -> {
                     }

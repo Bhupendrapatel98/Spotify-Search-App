@@ -15,7 +15,7 @@ import com.app.growtaskapplication.data.model.Item
 import com.app.growtaskapplication.data.model.tracks.TracksSearchResponse
 import com.app.growtaskapplication.databinding.FragmentTrackBinding
 import com.app.growtaskapplication.ui.view.adapter.SearchItemAdapter
-import com.app.growtaskapplication.ui.viewmodel.tracks.TracksViewModel
+import com.app.growtaskapplication.ui.viewmodel.SearchUserViewModel
 import com.app.growtaskapplication.utills.OnItemClick
 import com.app.growtaskapplication.utills.Resource
 import kotlinx.coroutines.FlowPreview
@@ -30,7 +30,7 @@ class TrackFragment : Fragment(), OnItemClick {
     private var queryMap: HashMap<String, String> = hashMapOf()
     private var tracksList: MutableList<Item> = mutableListOf()
     private lateinit var trackAdapter: SearchItemAdapter
-    private val tracksViewModel: TracksViewModel by activityViewModels()
+    private val searchUserViewModel: SearchUserViewModel by activityViewModels()
 
     @OptIn(FlowPreview::class)
     override fun onCreateView(
@@ -40,7 +40,7 @@ class TrackFragment : Fragment(), OnItemClick {
         fragmentTrackBinding = FragmentTrackBinding.inflate(inflater, container, false)
 
         lifecycleScope.launch {
-            tracksViewModel.searchFlowQuery.debounce(500)
+            searchUserViewModel.searchFlowQuery.debounce(500)
                 .distinctUntilChanged()
                 .filter {query->
                     return@filter query.isNotEmpty()
@@ -61,12 +61,12 @@ class TrackFragment : Fragment(), OnItemClick {
         queryMap["locale"] = "en-US"
         queryMap["offset"] = "0"
         queryMap["limit"] = "20"
-        tracksViewModel.searchTrack(queryMap)
+        searchUserViewModel.searchTrack(queryMap)
     }
 
     private fun attachObservers() {
         lifecycleScope.launch {
-            tracksViewModel.track.collect {
+            searchUserViewModel.track.collect {
                 when (it) {
                     is Resource.Loading -> {
                     }

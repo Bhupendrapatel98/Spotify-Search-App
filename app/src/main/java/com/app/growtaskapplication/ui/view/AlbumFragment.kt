@@ -16,8 +16,8 @@ import com.app.growtaskapplication.data.model.Item
 import com.app.growtaskapplication.data.model.album.SearchAlbumResponse
 import com.app.growtaskapplication.ui.view.adapter.SearchItemAdapter
 import com.app.growtaskapplication.databinding.FragmentAlbumBinding
+import com.app.growtaskapplication.ui.viewmodel.SearchUserViewModel
 import com.app.growtaskapplication.utills.Resource
-import com.app.growtaskapplication.ui.viewmodel.album.AlbumViewModel
 import com.app.growtaskapplication.utills.NetworkUtils
 import com.app.growtaskapplication.utills.OnItemClick
 import dagger.hilt.android.AndroidEntryPoint
@@ -32,7 +32,7 @@ class AlbumFragment : Fragment(), OnItemClick {
     private lateinit var albumAdapter: SearchItemAdapter
     private var queryMap: HashMap<String, String> = hashMapOf()
     private var albumList: MutableList<Item> = mutableListOf()
-    private val albumViewModel: AlbumViewModel by activityViewModels()
+    private val searchUserViewModel: SearchUserViewModel by activityViewModels()
 
     @Inject
     lateinit var networkUtils: NetworkUtils
@@ -46,7 +46,7 @@ class AlbumFragment : Fragment(), OnItemClick {
 
 
         lifecycleScope.launch {
-            albumViewModel.searchFlowQuery.debounce(500)
+            searchUserViewModel.searchFlowQuery.debounce(500)
                 .distinctUntilChanged()
                 .filter { query ->
                     return@filter query.isNotEmpty()
@@ -71,13 +71,13 @@ class AlbumFragment : Fragment(), OnItemClick {
         queryMap["locale"] = "en-US"
         queryMap["offset"] = "0"
         queryMap["limit"] = "20"
-        albumViewModel.searchAlbum(queryMap)
+        searchUserViewModel.searchAlbum(queryMap)
     }
 
 
     private fun attachObservers() {
         lifecycleScope.launch {
-            albumViewModel.albums.collect {
+            searchUserViewModel.albums.collect {
                 when (it) {
                     is Resource.Loading -> {
                     }

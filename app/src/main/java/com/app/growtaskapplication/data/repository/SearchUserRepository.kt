@@ -1,11 +1,12 @@
-package com.app.growtaskapplication.data.repository.album
+package com.app.growtaskapplication.data.repository
 
-import android.util.Log
 import com.app.growtaskapplication.data.api.ApiService
 import com.app.growtaskapplication.data.local.SearchDatabase
-import com.app.growtaskapplication.data.model.Item
 import com.app.growtaskapplication.data.model.album.Albums
 import com.app.growtaskapplication.data.model.album.SearchAlbumResponse
+import com.app.growtaskapplication.data.model.artist.ArtistSearchResponse
+import com.app.growtaskapplication.data.model.playlist.PlaylistSearchResponse
+import com.app.growtaskapplication.data.model.tracks.TracksSearchResponse
 import com.app.growtaskapplication.utills.NetworkUtils
 import com.app.growtaskapplication.utills.Resource
 import kotlinx.coroutines.Dispatchers
@@ -16,7 +17,7 @@ import kotlinx.coroutines.flow.flowOn
 import javax.inject.Inject
 import javax.inject.Named
 
-class AlbumRepository @Inject constructor(
+class SearchUserRepository @Inject constructor(
     @Named("commonService") val apiService: ApiService,
     private val searchDatabase: SearchDatabase,
     private val networkUtils: NetworkUtils
@@ -40,11 +41,27 @@ class AlbumRepository @Inject constructor(
         emit(Resource.failed(it.message.toString()))
     }.flowOn(Dispatchers.IO)
 
-    fun getAlbum(albumId: String): Flow<Resource<Item>> = flow {
-        emit(Resource.loading())
-        emit(Resource.success(apiService.getAlbum(albumId)))
-    }.catch {
-        emit(Resource.failed(it.message.toString()))
-    }.flowOn(Dispatchers.IO)
+    fun searchArtist(queryMap: HashMap<String, String>): Flow<Resource<ArtistSearchResponse>> =
+        flow {
+            emit(Resource.loading())
+            emit(Resource.success(apiService.searchArtist(queryMap)))
+        }.catch {
+            emit(Resource.failed(it.message.toString()))
+        }.flowOn(Dispatchers.IO)
 
+    fun searchPlaylist(queryMap: HashMap<String, String>): Flow<Resource<PlaylistSearchResponse>> =
+        flow {
+            emit(Resource.loading())
+            emit(Resource.success(apiService.searchPlaylist(queryMap)))
+        }.catch {
+            emit(Resource.failed(it.message.toString()))
+        }.flowOn(Dispatchers.IO)
+
+    fun searchTrack(queryMap: HashMap<String, String>): Flow<Resource<TracksSearchResponse>> =
+        flow {
+            emit(Resource.loading())
+            emit(Resource.success(apiService.searchTracks(queryMap)))
+        }.catch {
+            emit(Resource.failed(it.message.toString()))
+        }.flowOn(Dispatchers.IO)
 }

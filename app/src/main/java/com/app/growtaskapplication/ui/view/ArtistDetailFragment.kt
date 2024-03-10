@@ -5,18 +5,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.Toast
-import androidx.databinding.BindingAdapter
-import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.app.growtaskapplication.data.model.Item
 import com.app.growtaskapplication.databinding.FragmentArtistDetailBinding
-import com.app.growtaskapplication.ui.viewmodel.album.AlbumViewModel
-import com.app.growtaskapplication.ui.viewmodel.artist.ArtistViewModel
-import com.app.growtaskapplication.ui.viewmodel.playlist.PlaylistViewModel
-import com.app.growtaskapplication.ui.viewmodel.tracks.TracksViewModel
+import com.app.growtaskapplication.ui.viewmodel.UserDetailViewModel
 import com.app.growtaskapplication.utills.Resource
 import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
@@ -25,108 +19,28 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class ArtistDetailFragment : Fragment() {
     private lateinit var fragmentArtistDetailBinding: FragmentArtistDetailBinding
-    private val artistViewModel: ArtistViewModel by viewModels()
-    private val albumViewModel: AlbumViewModel by viewModels()
-    private val playListViewModel: PlaylistViewModel by viewModels()
-    private val tracksViewModel: TracksViewModel by viewModels()
+    private val userDetailViewModel: UserDetailViewModel by viewModels()
     private lateinit var type: String
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        fragmentArtistDetailBinding =
-            FragmentArtistDetailBinding.inflate(inflater, container, false)
+        savedInstanceState: Bundle?): View? {
+        fragmentArtistDetailBinding = FragmentArtistDetailBinding.inflate(inflater, container, false)
 
         arguments?.let {
             val id = it.getString("id")
             type = it.getString("type").toString()
-            when (type) {
-                "artist" -> {
-                    artistViewModel.getArtist(id!!)
-                }
-                "album" -> {
-                    albumViewModel.getAlbum(id!!)
-                }
-                "playlist" -> {
-                    playListViewModel.getPlaylist(id!!)
-                }
-                "tracks" -> {
-                    tracksViewModel.getTrack(id!!)
-                }
-            }
+            userDetailViewModel.getUserDetail(id!!, type)
         }
 
-        observeArtistDetail()
-        observeAlbumDetail()
-        observeTrackDetail()
-        observePlayListDetail()
+        observeUserDetail()
 
         return fragmentArtistDetailBinding.root
     }
 
-    private fun observeTrackDetail() {
+    private fun observeUserDetail() {
         lifecycleScope.launch {
-            tracksViewModel.trackDetail.collect {
-                when (it) {
-                    is Resource.Loading -> {
-                    }
-                    is Resource.Failed -> {
-                        Toast.makeText(context, it.message, Toast.LENGTH_SHORT).show()
-                    }
-                    is Resource.Success -> {
-                        handleSuccessResponse(it.data)
-                    }
-
-                    else -> {}
-                }
-            }
-        }
-    }
-
-    private fun observePlayListDetail() {
-        lifecycleScope.launch {
-            playListViewModel.playlistDetail.collect {
-                when (it) {
-                    is Resource.Loading -> {
-                    }
-                    is Resource.Failed -> {
-                        Toast.makeText(context, it.message, Toast.LENGTH_SHORT).show()
-                    }
-                    is Resource.Success -> {
-                        handleSuccessResponse(it.data)
-                    }
-
-                    else -> {}
-                }
-            }
-        }
-    }
-
-
-    private fun observeAlbumDetail() {
-        lifecycleScope.launch {
-            albumViewModel.albumsDetail.collect {
-                when (it) {
-                    is Resource.Loading -> {
-                    }
-                    is Resource.Failed -> {
-                        Toast.makeText(context, it.message, Toast.LENGTH_SHORT).show()
-                    }
-                    is Resource.Success -> {
-                        handleSuccessResponse(it.data)
-                    }
-
-                    else -> {}
-                }
-            }
-        }
-    }
-
-
-    private fun observeArtistDetail() {
-        lifecycleScope.launch {
-            artistViewModel.artistDetail.collect {
+            userDetailViewModel.userDetail.collect {
                 when (it) {
                     is Resource.Loading -> {
                     }

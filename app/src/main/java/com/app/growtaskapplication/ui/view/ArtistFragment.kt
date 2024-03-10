@@ -15,7 +15,7 @@ import com.app.growtaskapplication.data.model.Item
 import com.app.growtaskapplication.data.model.artist.ArtistSearchResponse
 import com.app.growtaskapplication.databinding.FragmentArtistBinding
 import com.app.growtaskapplication.ui.view.adapter.SearchItemAdapter
-import com.app.growtaskapplication.ui.viewmodel.artist.ArtistViewModel
+import com.app.growtaskapplication.ui.viewmodel.SearchUserViewModel
 import com.app.growtaskapplication.utills.OnItemClick
 import com.app.growtaskapplication.utills.Resource
 import dagger.hilt.android.AndroidEntryPoint
@@ -32,7 +32,7 @@ class ArtistFragment : Fragment(), OnItemClick {
     private var queryMap: HashMap<String, String> = hashMapOf()
     private var artistList: MutableList<Item> = mutableListOf()
     private lateinit var artistAdapter: SearchItemAdapter
-    private val artistViewModel: ArtistViewModel by activityViewModels()
+    private val searchUserViewModel: SearchUserViewModel by activityViewModels()
 
 
     @OptIn(FlowPreview::class)
@@ -44,7 +44,7 @@ class ArtistFragment : Fragment(), OnItemClick {
         fragmentArtistBinding = FragmentArtistBinding.inflate(inflater, container, false)
 
         lifecycleScope.launch {
-            artistViewModel.searchFlowQuery.debounce(500)
+            searchUserViewModel.searchFlowQuery.debounce(500)
                 .distinctUntilChanged()
                 .filter {query->
                     return@filter query.isNotEmpty()
@@ -64,12 +64,12 @@ class ArtistFragment : Fragment(), OnItemClick {
         queryMap["locale"] = "en-US"
         queryMap["offset"] = "0"
         queryMap["limit"] = "20"
-        artistViewModel.searchArtist(queryMap)
+        searchUserViewModel.searchArtist(queryMap)
     }
 
     private fun attachObservers() {
         lifecycleScope.launch {
-            artistViewModel.artist.collect {
+            searchUserViewModel.artist.collect {
                 when (it) {
                     is Resource.Loading -> {
                     }

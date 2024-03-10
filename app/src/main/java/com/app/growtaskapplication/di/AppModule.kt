@@ -5,8 +5,6 @@ import androidx.room.Room
 import com.app.growtaskapplication.data.api.ApiService
 import com.app.growtaskapplication.data.interceptor.HeaderInterceptor
 import com.app.growtaskapplication.data.local.SearchDatabase
-import com.app.growtaskapplication.ui.view.HomeFragment
-import com.app.growtaskapplication.utills.TokenRefreshService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -78,10 +76,6 @@ class AppModule {
     fun provideApiService(@Named("albumBuilder") retrofit: Retrofit): ApiService =
         retrofit.create(ApiService::class.java)
 
-    @Provides
-    fun provideTokenRefreshService():TokenRefreshService {
-        return HomeFragment()
-    }
 
     @Provides
     @Singleton

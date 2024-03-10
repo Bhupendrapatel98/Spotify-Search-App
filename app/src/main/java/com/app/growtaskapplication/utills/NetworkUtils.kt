@@ -6,7 +6,7 @@ import android.net.NetworkCapabilities
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 
-class NetworkUtils @Inject constructor(@ApplicationContext private val context: Context){
+class NetworkUtils @Inject constructor(@ApplicationContext private val context: Context) {
 
     fun isInterNetAvailable(): Boolean {
         val connectivityManager =

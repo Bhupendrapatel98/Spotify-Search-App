@@ -3,42 +3,31 @@ package com.app.growtaskapplication.ui.view
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.activity.viewModels
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import com.app.growtaskapplication.R
-import com.app.growtaskapplication.databinding.FragmentAlbumBinding
 import com.app.growtaskapplication.databinding.FragmentHomeBinding
-import com.app.growtaskapplication.ui.viewmodel.album.AlbumViewModel
-import com.app.growtaskapplication.ui.viewmodel.artist.ArtistViewModel
-import com.app.growtaskapplication.ui.viewmodel.playlist.PlaylistViewModel
+import com.app.growtaskapplication.ui.viewmodel.SearchUserViewModel
 import com.app.growtaskapplication.ui.viewmodel.token.GetTokenViewModel
-import com.app.growtaskapplication.ui.viewmodel.tracks.TracksViewModel
 import com.app.growtaskapplication.utills.Constants
 import com.app.growtaskapplication.utills.Resource
 import com.app.growtaskapplication.utills.TokenManager
-import com.app.growtaskapplication.utills.TokenRefreshService
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class HomeFragment : Fragment(), TokenRefreshService {
+class HomeFragment : Fragment() {
 
     private lateinit var fragmentHomeBinding: FragmentHomeBinding
     private val tokenViewModel: GetTokenViewModel by viewModels()
-    private val albumViewModel: AlbumViewModel by activityViewModels()
-    private val artistViewModel: ArtistViewModel by activityViewModels()
-    private val playlistViewModel: PlaylistViewModel by activityViewModels()
-    private val tracksViewModel: TracksViewModel by activityViewModels()
+    private val searchUserViewModel: SearchUserViewModel by activityViewModels()
     @Inject
     lateinit var tokenManager: TokenManager
 
@@ -58,13 +47,11 @@ class HomeFragment : Fragment(), TokenRefreshService {
     }
 
     private fun callGetTokeApi() {
-      //  if (tokenManager.getToken().isNullOrEmpty()) {
             tokenViewModel.getToken(
                 Constants.CLIENT_CREDENTIAL,
                 Constants.CLIENT_ID,
                 Constants.CLIENT_SECRET
             )
-     //   }
     }
 
     private fun observeToken() {
@@ -96,10 +83,7 @@ class HomeFragment : Fragment(), TokenRefreshService {
 
             override fun afterTextChanged(str: Editable?) {
                 if (str.toString().isNotEmpty()) {
-                    albumViewModel.searchFlowQuery.value = str.toString()
-                    artistViewModel.searchFlowQuery.value = str.toString()
-                    tracksViewModel.searchFlowQuery.value = str.toString()
-                    playlistViewModel.searchFlowQuery.value = str.toString()
+                    searchUserViewModel.searchFlowQuery.value = str.toString()
                 }
             }
         })
@@ -121,10 +105,4 @@ class HomeFragment : Fragment(), TokenRefreshService {
             }
         }.attach()
     }
-
-    override fun refreshToken() {
-        callGetTokeApi()
-    }
-
-
 }
