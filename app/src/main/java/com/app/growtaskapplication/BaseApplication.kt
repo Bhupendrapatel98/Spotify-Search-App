@@ -1,4 +1,4 @@
-package com.app.growtaskapplication.utills
+package com.app.growtaskapplication
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp

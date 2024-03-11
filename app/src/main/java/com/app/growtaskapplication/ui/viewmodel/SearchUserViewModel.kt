@@ -1,5 +1,6 @@
 package com.app.growtaskapplication.ui.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.app.growtaskapplication.data.model.SearchResponse
@@ -12,6 +13,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 import kotlin.collections.HashMap
+import kotlin.math.log
 
 @HiltViewModel
 class SearchUserViewModel @Inject constructor(private val repository: SearchUserRepository) :
@@ -40,20 +42,15 @@ class SearchUserViewModel @Inject constructor(private val repository: SearchUser
             queryMap["offset"] = "0"
             queryMap["limit"] = "20"
 
-            when (type) {
-                UserType.ALBUM -> repository.searchAlbum(queryMap).collect {
-                    _albums.value = it
-                }
-                UserType.ARTIST -> repository.searchArtist(queryMap).collect {
-                    _artist.value = it
-                }
-                UserType.PLAYLIST -> repository.searchPlaylist(queryMap).collect {
-                    _playlist.value = it
-                }
-                UserType.TRACKS -> repository.searchTrack(queryMap).collect {
-                    _track.value = it
+            repository.searchAlbum(queryMap,type).collect {
+                when (type) {
+                    UserType.ALBUM -> _albums.value = it
+                    UserType.ARTIST -> _artist.value = it
+                    UserType.PLAYLIST -> _playlist.value = it
+                    UserType.TRACKS -> _track.value = it
                 }
             }
+
         }
     }
 }

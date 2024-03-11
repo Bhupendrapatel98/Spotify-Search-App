@@ -23,13 +23,22 @@ class SearchUserRepository @Inject constructor(
     private val networkUtils: NetworkUtils
 ) {
 
-    fun searchAlbum(queryMap: HashMap<String, String>): Flow<Resource<SearchResponse>> = flow {
+    fun searchAlbum(
+        queryMap: HashMap<String, String>,
+        userType: UserType
+    ): Flow<Resource<SearchResponse>> = flow {
+
         emit(Resource.loading())
         if (networkUtils.isInterNetAvailable() && queryMap["query"].toString().isNotEmpty()) {
-            searchDatabase.searchDao().clearData()
-            val response = apiService.searchAlbum(queryMap).albums!!.items
-            searchDatabase.searchDao().insertSearch(response)
+
             emit(Resource.success(apiService.searchAlbum(queryMap)))
+
+            if (userType == UserType.ALBUM) {
+                searchDatabase.searchDao().clearData()
+                val response = apiService.searchAlbum(queryMap).albums!!.items
+                searchDatabase.searchDao().insertSearch(response)
+            }
+
         } else {
             val item = searchDatabase.searchDao().getAllSearch()
             val albums = Data("", item, 1, "", 1, "", 1)
@@ -40,27 +49,4 @@ class SearchUserRepository @Inject constructor(
         emit(Resource.failed(it.message.toString()))
     }.flowOn(Dispatchers.IO)
 
-    fun searchArtist(queryMap: HashMap<String, String>): Flow<Resource<SearchResponse>> =
-        flow {
-            emit(Resource.loading())
-            emit(Resource.success(apiService.searchAlbum(queryMap)))
-        }.catch {
-            emit(Resource.failed(it.message.toString()))
-        }.flowOn(Dispatchers.IO)
-
-    fun searchPlaylist(queryMap: HashMap<String, String>): Flow<Resource<SearchResponse>> =
-        flow {
-            emit(Resource.loading())
-            emit(Resource.success(apiService.searchAlbum(queryMap)))
-        }.catch {
-            emit(Resource.failed(it.message.toString()))
-        }.flowOn(Dispatchers.IO)
-
-    fun searchTrack(queryMap: HashMap<String, String>): Flow<Resource<SearchResponse>> =
-        flow {
-            emit(Resource.loading())
-            emit(Resource.success(apiService.searchAlbum(queryMap)))
-        }.catch {
-            emit(Resource.failed(it.message.toString()))
-        }.flowOn(Dispatchers.IO)
 }
