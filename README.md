@@ -7,23 +7,25 @@ making use of Kotlin, Coroutine, Flow, Dagger Hilt, Sealed class, Enum, Retrofit
 
 <img src="https://github.com/Bhupendrapatel98/Grow-Task/assets/55411086/e2128a97-a048-4d26-b97e-34d5c02b67af" alt="Image 1" width="100">
 
+Video Link -https://github.com/Bhupendrapatel98/Spotify-Search-App/assets/55411086/f1c0eee6-18c0-479e-bb2f-6b504cd98ad1
+
 # Project Structure
- **data**: This directory manages data operations.
-    - **api**: Houses the ApiService for making network requests.
-    - **model**: Contains interceptors for network requests.
-    - **local**: Handles local data storage, including converters, DAO interfaces, and database setup.
-    - **model**: Stores Plain Old Java Objects (POJOs) used for data modeling.
-    - **repository**: Contains repositories responsible for data management, including the search repository, user detail repository, and token repository.
- **di**: This directory handles Dependency Injection using Dagger Hilt.
-    -  **AppModule.kt**: Defines application-level dependencies such as Retrofit.
- **ui**: This directory holds user interface-related components.
-    -  **view**: Contains activities and fragments.
-    -  **viewmodel**: Houses ViewModels responsible for managing UI-related data.
- **util**: This directory contains utility classes and resources.
-    -  **constant**: Stores constant values used throughout the application.
-    -  **networkutil**: Contains utilities for network operations.
-    -  **Resource**: Handles resource management.
-    -  **BaseApplication**: The Application class responsible for Dagger setup and initialization.
+ **data**: This directory manages data operations.<br>
+    - **api**: Houses the ApiService for making network requests.<br>
+    - **model**: Contains interceptors for network requests.<br>
+    - **local**: Handles local data storage, including converters, DAO interfaces, and database setup.<br>
+    - **model**: Stores Plain Old Java Objects (POJOs) used for data modeling.<br>
+    - **repository**: Contains repositories responsible for data management, including the search repository, user detail repository, and token repository.<br>
+ **di**: This directory handles Dependency Injection using Dagger Hilt.<br>
+    -  **AppModule.kt**: Defines application-level dependencies such as Retrofit.<br>
+ **ui**: This directory holds user interface-related components.<br>
+    -  **view**: Contains activities and fragments.<br>
+    -  **viewmodel**: Houses ViewModels responsible for managing UI-related data.<br>
+ **util**: This directory contains utility classes and resources.<br>
+    -  **constant**: Stores constant values used throughout the application.<br>
+    -  **networkutil**: Contains utilities for network operations.<br>
+    -  **Resource**: Handles resource management.<br>
+    -  **BaseApplication**: The Application class responsible for Dagger setup and initialization.<br>
 
 # Libraries Used
 **Kotlin**: Primary language for development.<br>
