@@ -1,6 +1,5 @@
 package com.app.growtaskapplication.ui.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.app.growtaskapplication.data.model.SearchResponse

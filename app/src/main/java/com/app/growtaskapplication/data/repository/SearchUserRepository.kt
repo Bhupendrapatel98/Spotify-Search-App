@@ -1,10 +1,8 @@
 package com.app.growtaskapplication.data.repository
 
-import android.util.Log
 import com.app.growtaskapplication.data.api.ApiService
 import com.app.growtaskapplication.data.local.SearchDatabase
 import com.app.growtaskapplication.data.model.Data
-import com.app.growtaskapplication.data.model.Item
 import com.app.growtaskapplication.data.model.SearchResponse
 import com.app.growtaskapplication.utills.NetworkUtils
 import com.app.growtaskapplication.utills.Resource
