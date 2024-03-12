@@ -7,6 +7,7 @@ import com.app.growtaskapplication.ui.view.AlbumFragment
 import com.app.growtaskapplication.ui.view.ArtistFragment
 import com.app.growtaskapplication.ui.view.PlaylistFragment
 import com.app.growtaskapplication.ui.view.TrackFragment
+import com.app.growtaskapplication.utills.UserType
 
 class ViewPagerAdapter(fragmentActivity: FragmentActivity) : FragmentStateAdapter(fragmentActivity) {
 

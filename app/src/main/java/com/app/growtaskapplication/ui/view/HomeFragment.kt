@@ -3,14 +3,17 @@ package com.app.growtaskapplication.ui.view
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.view.get
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.viewpager2.widget.ViewPager2
 import com.app.growtaskapplication.R
 import com.app.growtaskapplication.databinding.FragmentHomeBinding
 import com.app.growtaskapplication.ui.viewmodel.SearchUserViewModel
@@ -93,10 +96,7 @@ class HomeFragment : Fragment() {
         val viewPagerAdapter = ViewPagerAdapter(requireActivity())
         fragmentHomeBinding.viewpager.adapter = viewPagerAdapter
 
-        TabLayoutMediator(
-            fragmentHomeBinding.tabs,
-            fragmentHomeBinding.viewpager
-        ) { tab, position ->
+        TabLayoutMediator(fragmentHomeBinding.tabs, fragmentHomeBinding.viewpager) { tab, position ->
             when (position) {
                 0 -> tab.text = getString(R.string.album)
                 1 -> tab.text = getString(R.string.artist)

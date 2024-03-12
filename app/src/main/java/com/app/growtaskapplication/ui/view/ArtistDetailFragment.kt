@@ -66,8 +66,8 @@ class ArtistDetailFragment : Fragment() {
                     .into(fragmentArtistDetailBinding.image)
             }
         } else {
-            if (item.images.isNotEmpty()) {
-                Glide.with(context!!).load(item.images[0].url)
+            if (item.images?.isNotEmpty() == true) {
+                Glide.with(context!!).load(item.images?.get(0)?.url)
                     .into(fragmentArtistDetailBinding.image)
             }
         }
@@ -80,7 +80,7 @@ class ArtistDetailFragment : Fragment() {
                 fragmentArtistDetailBinding.releaseDate.text = "${item.popularity} Popularity"
             }
             UserType.ALBUM.type -> {
-                fragmentArtistDetailBinding.artistName.text = item.artists[0].name
+                fragmentArtistDetailBinding.artistName.text = item.artists!![0].name
                 fragmentArtistDetailBinding.releaseDate.text = item.release_date
             }
             UserType.PLAYLIST.type -> {
@@ -88,7 +88,7 @@ class ArtistDetailFragment : Fragment() {
                 fragmentArtistDetailBinding.releaseDate.text = item.owner!!.display_name
             }
             UserType.TRACKS.type -> {
-                fragmentArtistDetailBinding.artistName.text = item.artists[0].name
+                fragmentArtistDetailBinding.artistName.text = item.artists!![0].name
                 fragmentArtistDetailBinding.releaseDate.text = item.album!!.release_date
             }
         }

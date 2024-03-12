@@ -6,7 +6,7 @@ import androidx.room.TypeConverter
 import androidx.room.TypeConverters
 import com.app.growtaskapplication.data.model.Item
 
-@Database(entities = [Item::class], version = 5)
+@Database(entities = [Item::class], version = 7)
 @TypeConverters(Converters::class)
 abstract class SearchDatabase : RoomDatabase() {
     abstract fun searchDao():SearchDao

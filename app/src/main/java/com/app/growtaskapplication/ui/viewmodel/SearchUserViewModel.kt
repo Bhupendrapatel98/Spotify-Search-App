@@ -1,5 +1,6 @@
 package com.app.growtaskapplication.ui.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.app.growtaskapplication.data.model.SearchResponse
@@ -12,7 +13,6 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 import kotlin.collections.HashMap
-import kotlin.math.log
 
 @HiltViewModel
 class SearchUserViewModel @Inject constructor(private val repository: SearchUserRepository) :

@@ -40,18 +40,29 @@ class TrackFragment : Fragment() {
         lifecycleScope.launch {
             searchUserViewModel.searchFlowQuery.debounce(500)
                 .distinctUntilChanged()
-                .filter {query->
-                    return@filter query.isNotEmpty()
-                }.collect {
+                .collect {
                     searchUserViewModel.search(UserType.TRACKS)
-
                 }
         }
 
+        setUpAdapter()
         attachObservers()
 
         return fragmentTrackBinding.root
     }
+
+    private fun setUpAdapter() {
+
+        trackAdapter = SearchItemAdapter(tracksList,UserType.TRACKS){ type, id->
+            val bundle = Bundle()
+            bundle.putString("type", type.type)
+            bundle.putString("id", id)
+            Navigation.findNavController(fragmentTrackBinding.root).navigate(R.id.action_homeFragment_to_artistDetailFragment,bundle)
+        }
+        fragmentTrackBinding.recyclerView.layoutManager = LinearLayoutManager(context)
+        fragmentTrackBinding.recyclerView.adapter = trackAdapter
+    }
+
 
     private fun attachObservers() {
         lifecycleScope.launch {
@@ -64,7 +75,10 @@ class TrackFragment : Fragment() {
                         //handle failure
                     }
                     is Resource.Success -> {
-                        handleSuccess(it.data)
+                        val dataFiltered = it.data.tracks?.items?.filter { item ->
+                            item.type == "track"
+                        }
+                        handleSuccess(dataFiltered)
                     }
                     else -> {
                         //handle else
@@ -74,15 +88,9 @@ class TrackFragment : Fragment() {
         }
     }
 
-    private fun handleSuccess(data: SearchResponse) {
-        tracksList = data.tracks!!.items.toMutableList()
-        trackAdapter = SearchItemAdapter(tracksList,UserType.TRACKS){ type, id->
-            val bundle = Bundle()
-            bundle.putString("type", type.type)
-            bundle.putString("id", id)
-            Navigation.findNavController(fragmentTrackBinding.root).navigate(R.id.action_homeFragment_to_artistDetailFragment,bundle)
-        }
-        fragmentTrackBinding.recyclerView.layoutManager = LinearLayoutManager(context)
-        fragmentTrackBinding.recyclerView.adapter = trackAdapter
+    private fun handleSuccess(data: List<Item>?) {
+        tracksList.clear()
+        data?.let { tracksList.addAll(it) }
+        trackAdapter.notifyDataSetChanged()
     }
 }

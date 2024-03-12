@@ -41,13 +41,20 @@ class Converters {
 
     @TypeConverter
     fun fromJson(json: String): List<Artist> {
+        if (json == null) {
+            return emptyList()
+        }
         val type = object : TypeToken<List<Artist>>() {}.type
-        return Gson().fromJson(json, type)
+        return Gson().fromJson(json, type)?: emptyList()
     }
 
     @TypeConverter
-    fun toJson(artists: List<Artist>): String {
-        return Gson().toJson(artists)
+    fun toJson(artists: List<Artist>?): String {
+        return if (artists != null) {
+            Gson().toJson(artists)
+        } else {
+            ""
+        }
     }
 
     @TypeConverter

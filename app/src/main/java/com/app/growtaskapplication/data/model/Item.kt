@@ -5,11 +5,10 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "searchResults")
 data class Item(
-    @PrimaryKey(autoGenerate = true) val uId: Long = 0,
-    val id: String,
+    @PrimaryKey val id: String,
     val album_type: String?,
-    val artists: List<Artist>,
-    val images: List<Image>,
+    val artists: List<Artist>?,
+    val images: List<Image>?,
     val name: String?,
     val release_date: String?,
     val release_date_precision: String?,

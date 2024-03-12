@@ -42,15 +42,13 @@ class ArtistFragment : Fragment() {
         lifecycleScope.launch {
             searchUserViewModel.searchFlowQuery.debounce(500)
                 .distinctUntilChanged()
-                .filter { query ->
-                    return@filter query.isNotEmpty()
-                }.collect {
+                .collect {
                     searchUserViewModel.search(UserType.ARTIST)
                 }
         }
 
-        attachObservers()
         setUpAdapter()
+        attachObservers()
 
         return fragmentArtistBinding.root
     }
@@ -78,7 +76,8 @@ class ArtistFragment : Fragment() {
                         //handle failure
                     }
                     is Resource.Success -> {
-                        handleSuccess(it.data)
+                        val dataFiltered = it.data.artists?.items?.filter { item -> item.type == "artist" }
+                        handleSuccess(dataFiltered)
                     }
                     else -> {
                         // handle else
@@ -88,9 +87,9 @@ class ArtistFragment : Fragment() {
         }
     }
 
-    private fun handleSuccess(data: SearchResponse) {
+    private fun handleSuccess(item: List<Item>?) {
         artistList.clear()
-        data.artists?.let { artistList.addAll(it.items) }
+        item?.let { artistList.addAll(it) }
         artistAdapter.notifyDataSetChanged()
     }
 }

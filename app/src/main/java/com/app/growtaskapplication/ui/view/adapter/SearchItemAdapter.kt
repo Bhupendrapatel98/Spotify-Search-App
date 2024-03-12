@@ -28,7 +28,7 @@ class SearchItemAdapter(
                 Glide.with(holder.binding.image.context).load(singleUnit.album.images[0].url).into(holder.binding.image)
             }
         } else {
-            if (singleUnit.images.isNotEmpty()) {
+            if (singleUnit.images?.isNotEmpty() == true) {
                 Glide.with(holder.binding.image.context).load(singleUnit.images[0].url).into(holder.binding.image)
             }
         }
@@ -41,7 +41,7 @@ class SearchItemAdapter(
                 holder.binding.releaseDate.text = "${singleUnit.popularity.toString()} Popularity"
             }
             UserType.ALBUM -> {
-                holder.binding.artistName.text = singleUnit.artists[0].name
+                holder.binding.artistName.text = singleUnit.artists!![0].name
                 holder.binding.releaseDate.text = singleUnit.release_date
             }
             UserType.PLAYLIST -> {
@@ -49,7 +49,7 @@ class SearchItemAdapter(
                 holder.binding.releaseDate.text = singleUnit.owner?.display_name
             }
             UserType.TRACKS -> {
-                holder.binding.artistName.text = singleUnit.artists[0].name
+                holder.binding.artistName.text = singleUnit.artists!![0].name
                 holder.binding.releaseDate.text = singleUnit.album?.release_date
             }
         }

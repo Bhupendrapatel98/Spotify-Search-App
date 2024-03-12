@@ -42,16 +42,26 @@ class PlaylistFragment : Fragment() {
         lifecycleScope.launch {
             searchUserViewModel.searchFlowQuery.debounce(500)
                 .distinctUntilChanged()
-                .filter {query->
-                    return@filter query.isNotEmpty()
-                }.collect {
+                .collect {
                     searchUserViewModel.search(UserType.PLAYLIST)
                 }
         }
 
+        setUpAdapter()
         attachObservers()
 
         return fragmentPlaylistBinding.root
+    }
+
+    private fun setUpAdapter() {
+        playlistAdapter = SearchItemAdapter(playlistList,UserType.PLAYLIST){ type, id->
+            val bundle = Bundle()
+            bundle.putString("type", type.type)
+            bundle.putString("id", id)
+            Navigation.findNavController(fragmentPlaylistBinding.root).navigate(R.id.action_homeFragment_to_artistDetailFragment,bundle)
+        }
+        fragmentPlaylistBinding.recyclerView.layoutManager = LinearLayoutManager(context)
+        fragmentPlaylistBinding.recyclerView.adapter = playlistAdapter
     }
 
     private fun attachObservers() {
@@ -65,7 +75,10 @@ class PlaylistFragment : Fragment() {
                        //handle failure
                     }
                     is Resource.Success -> {
-                        handleSuccess(it.data)
+                        val dataFiltered = it.data.playlists?.items?.filter { item ->
+                            item.type == "playlist"
+                        }
+                        handleSuccess(dataFiltered)
                     }
                     else -> {
                         //handle else
@@ -75,17 +88,10 @@ class PlaylistFragment : Fragment() {
         }
     }
 
-    private fun handleSuccess(data: SearchResponse) {
-        playlistList = data.playlists!!.items.toMutableList()
-        playlistAdapter = SearchItemAdapter(playlistList,UserType.PLAYLIST,){ type, id->
-            val bundle = Bundle()
-            bundle.putString("type", type.type)
-            bundle.putString("id", id)
-            Navigation.findNavController(fragmentPlaylistBinding.root).navigate(R.id.action_homeFragment_to_artistDetailFragment,bundle)
-        }
-        fragmentPlaylistBinding.recyclerView.layoutManager = LinearLayoutManager(context)
-        fragmentPlaylistBinding.recyclerView.adapter = playlistAdapter
-
+    private fun handleSuccess(item: List<Item>?) {
+        playlistList.clear()
+        item?.let { playlistList.addAll(it) }
+        playlistAdapter.notifyDataSetChanged()
     }
 
 }

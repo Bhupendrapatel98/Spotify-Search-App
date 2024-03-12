@@ -27,20 +27,27 @@ class SearchUserRepository @Inject constructor(
     ): Flow<Resource<SearchResponse>> = flow {
 
         emit(Resource.loading())
+
         if (networkUtils.isInterNetAvailable() && queryMap["query"].toString().isNotEmpty()) {
-
-            emit(Resource.success(apiService.searchAlbum(queryMap)))
-
-            if (userType == UserType.ALBUM) {
-                searchDatabase.searchDao().clearData()
-                val response = apiService.searchAlbum(queryMap).albums!!.items
-                searchDatabase.searchDao().insertSearch(response)
+            val apiResponse = apiService.searchAlbum(queryMap)
+            val item = when (userType) {
+                UserType.ALBUM -> apiResponse.albums!!.items
+                UserType.ARTIST -> apiResponse.artists!!.items
+                UserType.PLAYLIST -> apiResponse.playlists!!.items
+                UserType.TRACKS -> apiResponse.tracks!!.items
             }
 
+            if (item != null) {
+                searchDatabase.searchDao().apply {
+                    deleteByType(userType.type)
+                    insertSearch(item)
+                }
+            }
+            emit(Resource.success(apiResponse))
         } else {
             val item = searchDatabase.searchDao().getAllSearch()
             val albums = Data("", item, 1, "", 1, "", 1)
-            val searchAlbumResponse = SearchResponse(null, albums, null, null)
+            val searchAlbumResponse = SearchResponse(albums, albums, albums, albums)
             emit(Resource.success(searchAlbumResponse))
         }
     }.catch {

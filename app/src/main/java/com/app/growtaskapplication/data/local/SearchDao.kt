@@ -11,11 +11,14 @@ import kotlinx.coroutines.flow.Flow
 interface SearchDao {
 
     @Query("SELECT * FROM searchResults")
-    fun getAllSearch(): List<Item>
+    suspend fun getAllSearch(): List<Item>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertSearch(searchItem : List<Item>)
 
     @Query("DELETE FROM searchResults")
     suspend fun clearData()
+
+    @Query("DELETE FROM searchResults WHERE type= :type")
+    suspend fun deleteByType(type:String)
 }
