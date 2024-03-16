@@ -30,7 +30,7 @@ class AppModule {
 
     @Provides
     @Singleton
-    fun provideHttpLoggingInterceptor():HttpLoggingInterceptor{
+    fun provideHttpLoggingInterceptor(): HttpLoggingInterceptor {
         return HttpLoggingInterceptor().apply {
             level = HttpLoggingInterceptor.Level.BODY
         }
@@ -38,7 +38,8 @@ class AppModule {
 
     @Provides
     @Singleton
-    fun provideOkHttpClient(headerInterceptor: HeaderInterceptor, httpLoggingInterceptor: HttpLoggingInterceptor): OkHttpClient {
+    fun provideOkHttpClient(headerInterceptor: HeaderInterceptor,
+        httpLoggingInterceptor: HttpLoggingInterceptor): OkHttpClient {
         return OkHttpClient.Builder()
             .addInterceptor(headerInterceptor)
             .addInterceptor(httpLoggingInterceptor)
@@ -79,7 +80,7 @@ class AppModule {
 
     @Provides
     @Singleton
-    fun provideDatabase(app: Application) : SearchDatabase =
+    fun provideDatabase(app: Application): SearchDatabase =
         Room.databaseBuilder(app, SearchDatabase::class.java, "search_database")
             .fallbackToDestructiveMigration()
             .build()

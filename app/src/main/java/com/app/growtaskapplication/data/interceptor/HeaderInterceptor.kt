@@ -9,24 +9,26 @@ import java.io.IOException
 import javax.inject.Inject
 
 class HeaderInterceptor @Inject constructor(
-    private val tokenManager: TokenManager,
-    private val networkUtils: NetworkUtils
+    private val tokenManager: TokenManager, private val networkUtils: NetworkUtils
 ) : Interceptor {
 
     override fun intercept(chain: Interceptor.Chain): Response {
         val originalRequest: Request = chain.request()
         val token = tokenManager.getToken()
 
+        //when no internet show custom exception
         if (!networkUtils.isInterNetAvailable()) {
-            throw NoConnectivityException("No internet connection")
+            throw NoConnectivityException()
         }
+
+        //need to handle token expire
+
         return chain.proceed(newRequestWithAccessToken(token.toString(), originalRequest))
     }
 
     private fun newRequestWithAccessToken(accessToken: String, request: Request): Request =
-        request.newBuilder()
-            .header("Authorization", "Bearer $accessToken")
-            .build()
+        request.newBuilder().header("Authorization", "Bearer $accessToken").build()
 
-    class NoConnectivityException(message: String) : IOException()
+    class NoConnectivityException(message: String="No internet connection") : IOException(message)
+
 }

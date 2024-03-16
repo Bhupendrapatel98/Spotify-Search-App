@@ -6,6 +6,6 @@ data class Data (
     val limit: Int,
     val next: String,
     val offset: Int,
-    val previous: Any,
+    val previous: String,
     val total: Int
 )

@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.Navigation
@@ -74,10 +75,10 @@ class AlbumFragment() : Fragment() {
             searchUserViewModel.albums.collect {
                 when (it) {
                     is Resource.Loading -> {
-                        //show loader
+                        Toast.makeText(context, "Loading", Toast.LENGTH_SHORT).show();
                     }
                     is Resource.Failed -> {
-                        //handle failure
+                        Toast.makeText(context, it.message, Toast.LENGTH_SHORT).show();
                     }
                     is Resource.Success -> {
                         val dataFiltered = it.data.albums?.items?.filter { item ->
