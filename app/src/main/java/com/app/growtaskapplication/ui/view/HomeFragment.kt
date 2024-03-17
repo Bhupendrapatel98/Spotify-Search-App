@@ -14,6 +14,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.viewpager2.widget.ViewPager2
+import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
 import com.app.growtaskapplication.R
 import com.app.growtaskapplication.databinding.FragmentHomeBinding
 import com.app.growtaskapplication.ui.viewmodel.SearchUserViewModel
@@ -21,6 +22,7 @@ import com.app.growtaskapplication.ui.viewmodel.token.GetTokenViewModel
 import com.app.growtaskapplication.utills.Constants
 import com.app.growtaskapplication.utills.Resource
 import com.app.growtaskapplication.utills.TokenManager
+import com.app.growtaskapplication.utills.UserType
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -104,5 +106,11 @@ class HomeFragment : Fragment() {
                 3 -> tab.text = getString(R.string.track)
             }
         }.attach()
+
+        fragmentHomeBinding.viewpager.registerOnPageChangeCallback(object  : OnPageChangeCallback() {
+            override fun onPageSelected(position: Int) {
+                super.onPageSelected(position)
+            }
+        })
     }
 }

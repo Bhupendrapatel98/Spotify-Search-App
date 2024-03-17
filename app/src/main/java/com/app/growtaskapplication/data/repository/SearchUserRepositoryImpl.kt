@@ -1,8 +1,6 @@
 package com.app.growtaskapplication.data.repository
 
-import android.util.Log
 import com.app.growtaskapplication.data.api.ApiService
-import com.app.growtaskapplication.data.interceptor.HeaderInterceptor
 import com.app.growtaskapplication.data.local.SearchDatabase
 import com.app.growtaskapplication.data.model.Data
 import com.app.growtaskapplication.data.model.SearchResponse
@@ -12,14 +10,13 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
-import retrofit2.HttpException
 import javax.inject.Inject
 import javax.inject.Named
 
-class SearchUserRepository @Inject constructor(
-    @Named("commonService") val apiService: ApiService, private val searchDatabase: SearchDatabase) {
+class SearchUserRepositoryImpl @Inject constructor(
+    @Named("commonService") val apiService: ApiService, private val searchDatabase: SearchDatabase) : SearchRepository {
 
-    fun searchAlbum(queryMap: HashMap<String, String>, userType: UserType): Flow<Resource<SearchResponse>> = flow {
+    override suspend fun searchAlbum(queryMap: HashMap<String, String>, userType: UserType): Flow<Resource<SearchResponse>> = flow {
         emit(Resource.loading())
         //getting Data from Remote Source
         val apiResponse = apiService.searchAlbum(queryMap)
@@ -28,7 +25,6 @@ class SearchUserRepository @Inject constructor(
     }.catch {
         //getting data from Local Source in all error case
         emit(Resource.success(showCacheData()))
-
         //handle errors
         emit(Resource.failed(handleNetworkException(it)))
     }.flowOn(Dispatchers.IO)

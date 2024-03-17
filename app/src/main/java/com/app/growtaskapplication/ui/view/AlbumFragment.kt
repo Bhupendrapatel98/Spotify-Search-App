@@ -19,6 +19,7 @@ import com.app.growtaskapplication.databinding.FragmentAlbumBinding
 import com.app.growtaskapplication.ui.viewmodel.SearchUserViewModel
 import com.app.growtaskapplication.utills.Resource
 import com.app.growtaskapplication.utills.NetworkUtils
+import com.app.growtaskapplication.utills.ProgressDialog
 import com.app.growtaskapplication.utills.UserType
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.FlowPreview
@@ -27,7 +28,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class AlbumFragment() : Fragment() {
+class AlbumFragment : Fragment() {
     private lateinit var fragmentAlbumBinding: FragmentAlbumBinding
     private lateinit var albumAdapter: SearchItemAdapter
     private var albumList: MutableList<Item> = mutableListOf()
@@ -42,6 +43,7 @@ class AlbumFragment() : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         fragmentAlbumBinding = FragmentAlbumBinding.inflate(inflater, container, false)
+
 
         lifecycleScope.launch {
             searchUserViewModel.searchFlowQuery.debounce(500)
@@ -75,18 +77,19 @@ class AlbumFragment() : Fragment() {
             searchUserViewModel.albums.collect {
                 when (it) {
                     is Resource.Loading -> {
-                        Toast.makeText(context, "Loading", Toast.LENGTH_SHORT).show();
+                        ProgressDialog.show(context!!)
                     }
                     is Resource.Failed -> {
+                        ProgressDialog.dismiss()
                         Toast.makeText(context, it.message, Toast.LENGTH_SHORT).show();
                     }
                     is Resource.Success -> {
+                        ProgressDialog.dismiss()
                         val dataFiltered = it.data.albums?.items?.filter { item ->
                             item.type == "album"
                         }
                         handleSuccess(dataFiltered)
                     }
-                    else -> {}
                 }
             }
         }

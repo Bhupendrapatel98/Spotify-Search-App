@@ -15,6 +15,7 @@ import com.app.growtaskapplication.data.model.SearchResponse
 import com.app.growtaskapplication.databinding.FragmentPlaylistBinding
 import com.app.growtaskapplication.ui.view.adapter.SearchItemAdapter
 import com.app.growtaskapplication.ui.viewmodel.SearchUserViewModel
+import com.app.growtaskapplication.utills.ProgressDialog
 import com.app.growtaskapplication.utills.Resource
 import com.app.growtaskapplication.utills.UserType
 import dagger.hilt.android.AndroidEntryPoint
@@ -69,19 +70,17 @@ class PlaylistFragment : Fragment() {
             searchUserViewModel.playlist.collect {
                 when (it) {
                     is Resource.Loading -> {
-                        //show Loader
+                        ProgressDialog.show(context!!)
                     }
                     is Resource.Failed -> {
-                       //handle failure
+                       ProgressDialog.dismiss()
                     }
                     is Resource.Success -> {
+                        ProgressDialog.dismiss()
                         val dataFiltered = it.data.playlists?.items?.filter { item ->
                             item.type == "playlist"
                         }
                         handleSuccess(dataFiltered)
-                    }
-                    else -> {
-                        //handle else
                     }
                 }
             }
