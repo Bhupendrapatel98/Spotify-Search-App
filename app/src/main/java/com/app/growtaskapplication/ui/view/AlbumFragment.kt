@@ -46,7 +46,8 @@ class AlbumFragment : Fragment() {
 
 
         lifecycleScope.launch {
-            searchUserViewModel.searchFlowQuery.debounce(500)
+            searchUserViewModel.searchFlowQuery
+                .debounce(500)
                 .distinctUntilChanged()
                 .collect {
                     searchUserViewModel.search(UserType.ALBUM)

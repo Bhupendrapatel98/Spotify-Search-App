@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AndroidLayouts">
+    <shared>
+      <config />
+    </shared>
+  </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="NONE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="08a66aa1-ad1d-43ab-b639-2860983973f1" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../CleanArchetecture/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../CleanArchetecture/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../CleanArchetecture/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../CleanArchetecture/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../CleanArchetecture/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../CleanArchetecture/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../CleanArchetecture/app/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../CleanArchetecture/app/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../CleanArchetecture/app/proguard-rules.pro" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../CleanArchetecture/app/src/androidTest/java/com/app/cleanarchetecture/ExampleInstrumentedTest.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../CleanArchetecture/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../CleanArchetecture/app/src/main/java/com/app/cleanarchetecture/data/remote/api/ApiService.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../CleanArchetecture/app/src/main/java/com/app/cleanarchetecture/presentation/ui/MainActivity.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../CleanArchetecture/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../CleanArchetecture/app/src/main/res/drawable/ic_launcher_background.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../CleanArchetecture/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../CleanArchetecture/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../CleanArchetecture/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../CleanArchetecture/app/src/main/res/mipmap-anydpi-v33/ic_launcher.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../CleanArchetecture/app/src/main/res/mipmap-hdpi/ic_launcher.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../CleanArchetecture/app/src/main/res/mipmap-hdpi/ic_launcher_round.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../CleanArchetecture/app/src/main/res/mipmap-mdpi/ic_launcher.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../CleanArchetecture/app/src/main/res/mipmap-mdpi/ic_launcher_round.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../CleanArchetecture/app/src/main/res/mipmap-xhdpi/ic_launcher.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../CleanArchetecture/app/src/main/res/mipmap-xhdpi/ic_launcher_round.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../CleanArchetecture/app/src/main/res/mipmap-xxhdpi/ic_launcher.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../CleanArchetecture/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../CleanArchetecture/app/src/main/res/mipmap-xxxhdpi/ic_launcher.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../CleanArchetecture/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../CleanArchetecture/app/src/main/res/values-night/themes.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../CleanArchetecture/app/src/main/res/values/colors.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../CleanArchetecture/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../CleanArchetecture/app/src/main/res/values/themes.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../CleanArchetecture/app/src/main/res/xml/backup_rules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../CleanArchetecture/app/src/main/res/xml/data_extraction_rules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../CleanArchetecture/app/src/test/java/com/app/cleanarchetecture/ExampleUnitTest.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../CleanArchetecture/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../CleanArchetecture/gradle.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../CleanArchetecture/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../CleanArchetecture/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../CleanArchetecture/gradlew" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../CleanArchetecture/gradlew.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../CleanArchetecture/settings.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../agri-new/client-access-agriculture-mob-android/Agriculture-Online/.idea/modules/Agriculture-Online-New.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../agri-new/client-access-agriculture-mob-android/Agriculture-Online/.idea/modules/app/Agriculture-Online-New.app.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/java/com/app/growtaskapplication/ExampleUnitTest.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/auth/login/view/LoginActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/auth/login/view/LoginActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/auth/otpverify/view/OtpActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/auth/otpverify/view/OtpActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/fragments/AccountFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/fragments/AccountFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/fragments/HistoryFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/fragments/HistoryFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/fragments/HomeFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/fragments/HomeFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/fragments/RewardsActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/fragments/RewardsActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/fragments/TransactionFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/fragments/TransactionFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/network/ApiInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/network/ApiInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/network/HeaderInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/network/HeaderInterceptor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/network/RetrofitService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/network/RetrofitService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/utils/Constant.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/utils/Constant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/utils/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/utils/Utils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/NotificationActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/NotificationActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/PaymentSuccessActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/PaymentSuccessActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/ScanToPayActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/ScanToPayActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/TransactionActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/TransactionActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/applyloan/AllLoanListResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/applyloan/AllLoanListResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/applyloan/AssetPositionLoanActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/applyloan/AssetPositionLoanActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/applyloan/ChatActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/applyloan/ChatActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/applyloan/ChatListAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/applyloan/ChatListAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/applyloan/ChatListResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/applyloan/ChatListResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/applyloan/LiabilitiesLoanActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/applyloan/LiabilitiesLoanActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/applyloan/LivingExpensesLoanActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/applyloan/LivingExpensesLoanActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/applyloan/LoanStatusActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/applyloan/LoanStatusActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/applyloan/LoanStatusAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/applyloan/LoanStatusAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/applyloan/MonthlyLivingCostLoanActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/applyloan/MonthlyLivingCostLoanActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/applyloan/PersonalDetailsLoanActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/applyloan/PersonalDetailsLoanActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/applyloan/PersonalDetailsLoanFourthActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/applyloan/PersonalDetailsLoanFourthActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/applyloan/PersonalDetailsLoanSecondActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/applyloan/PersonalDetailsLoanSecondActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/applyloan/PersonalDetailsLoanThirdActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/applyloan/PersonalDetailsLoanThirdActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/applyloan/UploadDocsSecondLoanActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/applyloan/UploadDocsSecondLoanActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/attendance/AttendanceListByDateResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/attendance/AttendanceListByDateResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/attendance/AttendanceListResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/attendance/AttendanceListResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/attendance/AttendenceAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/attendance/AttendenceAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/attendance/AttendenceRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/attendance/AttendenceRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/attendance/ViewAllAttendenceAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/attendance/ViewAllAttendenceAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/attendance/ViewAttendenceActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/attendance/ViewAttendenceActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/dashboard/adapter/HomeTransactionAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/dashboard/adapter/HomeTransactionAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/dashboard/adapter/RecentTransactionAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/dashboard/adapter/RecentTransactionAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/dashboard/model/GetHomeResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/dashboard/model/GetHomeResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/dashboard/repository/RecentTransactionRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/dashboard/repository/RecentTransactionRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/dashboard/view/DashboardActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/dashboard/view/DashboardActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/dashboard/view/FaceAuthActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/dashboard/view/FaceAuthActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/dashboard/viewmodel/RecentTransactionViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/dashboard/viewmodel/RecentTransactionViewModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/personalDetails/LivingExpensesActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/personalDetails/LivingExpensesActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/personalDetails/PersonalDetailsSecondActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/personalDetails/PersonalDetailsSecondActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/personalDetails/repository/CustomerDetailsRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/personalDetails/repository/CustomerDetailsRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/personalDetails/viewmodel/CustomerDetailsViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/personalDetails/viewmodel/CustomerDetailsViewModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/profile/view/ProfileActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/profile/view/ProfileActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/repayment/view/RepaymentActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/repayment/view/RepaymentActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/scanner/view/ScannerActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/scanner/view/ScannerActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/selectTopay/repository/GetStoreRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/selectTopay/repository/GetStoreRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/selectTopay/viewmodel/GetStoreViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/selectTopay/viewmodel/GetStoreViewModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/transfer/AddBankDetailActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/transfer/AddBankDetailActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/transfer/BankListActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/transfer/BankListActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/transfer/EnterPinActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/transfer/EnterPinActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/transfer/PaymentResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/transfer/PaymentResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/transfer/ReviewPaymentActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/transfer/ReviewPaymentActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/transfer/TransferActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/transfer/TransferActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/uploadDocs/adapter/BankAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/uploadDocs/adapter/BankAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/uploadDocs/adapter/EmployLetterAdpter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/uploadDocs/adapter/EmployLetterAdpter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/uploadDocs/adapter/LoanStatmentAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/uploadDocs/adapter/LoanStatmentAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/uploadDocs/adapter/OtherIncomeAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/uploadDocs/adapter/OtherIncomeAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/uploadDocs/adapter/PaySlipAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/uploadDocs/adapter/PaySlipAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/uploadDocs/adapter/TINAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/uploadDocs/adapter/TINAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/uploadDocs/repository/UploadDocsRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/uploadDocs/repository/UploadDocsRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/uploadDocs/view/UploadDocsSecondActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/uploadDocs/view/UploadDocsSecondActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/uploadDocs/viewmodel/UploadDocsViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/java/com/app/thirdrocNoNFC/views/uploadDocs/viewmodel/UploadDocsViewModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/res/layout/active_ewa_dialog.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/res/layout/active_ewa_dialog.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/res/layout/activity_chat.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/res/layout/activity_chat.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/res/layout/activity_uplaod_docs_second.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/res/layout/activity_uplaod_docs_second.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/res/layout/activity_view_attendence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/res/layout/activity_view_attendence.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/res/layout/attendence_item.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/res/layout/attendence_item.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/res/layout/chat_list_item.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/res/layout/chat_list_item.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/res/layout/fragment_home.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/res/layout/fragment_home.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/res/layout/loan_status_item.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/res/layout/loan_status_item.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/res/layout/view_attendence_bs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/res/layout/view_attendence_bs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/res/layout/viewall_attendence_item.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/res/layout/viewall_attendence_item.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/res/values/colors.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ThirdRocWithoutNfc/app/src/main/res/values/strings.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[]" />
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="navigationResourceFile" />
+        <option value="Kotlin Object" />
+        <option value="Kotlin Data Class" />
+        <option value="Kotlin Enum" />
+        <option value="Kotlin File" />
+        <option value="Kotlin Interface" />
+        <option value="resourceFile" />
+        <option value="JUnit4 Test Class" />
+        <option value="Kotlin Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="ROOT_SYNC" value="SYNC" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectId" id="2dKGbBxH9zAeOGNQ5PYya8v0pSp" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;PROJECT_TRUSTED_KEY&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;com.google.services.firebase.aqiPopupShown&quot;: &quot;true&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit4&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4&quot;: &quot;&quot;,
+    &quot;last_directory_selection&quot;: &quot;C:/Users/shubham/SMTProjects/DemoProject/GrowTaskApplication/app/src/androidTest/java/com/app/growtaskapplication&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/shubham/SMTProjects/DemoProject/GrowTaskApplication/app/src/main/res/layout&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;SDK Location&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.17&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\shubham\SMTProjects\DemoProject\GrowTaskApplication\app\src\main\res\layout" />
+    </key>
+    <key name="android.template.1330759496">
+      <recent name="com.app.growtaskapplication.ui.view" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
+      <recent name="com.app.growtaskapplication" />
+      <recent name="com.app.growtaskapplication.data.model" />
+      <recent name="com.app.growtaskapplication.data.interceptor" />
+      <recent name="com.app.growtaskapplication.data.api" />
+      <recent name="com.app.growtaskapplication.utills" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.app.growtaskapplication.ui.viewmodel" />
+    </key>
+    <key name="CopyKotlinDeclarationDialog.RECENTS_KEY">
+      <recent name="com.app.growtaskapplication.utills" />
+      <recent name="com.app.growtaskapplication.data.repository.artist" />
+      <recent name="com.app.growtaskapplication.ui.viewmodel.artist" />
+      <recent name="com.app.growtaskapplication.di" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App">
+      <module name="GrowTaskApplication.app.main" />
+      <option name="DEPLOY" value="true" />
+      <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
+      <option name="DEPLOY_AS_INSTANT" value="false" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="PM_INSTALL_OPTIONS" value="" />
+      <option name="ALL_USERS" value="false" />
+      <option name="ALWAYS_INSTALL_WITH_PM" value="false" />
+      <option name="CLEAR_APP_STORAGE" value="false" />
+      <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
+      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="INSPECTION_WITHOUT_ACTIVITY_RESTART" value="false" />
+      <option name="TARGET_SELECTION_MODE" value="DEVICE_AND_SNAPSHOT_COMBO_BOX" />
+      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
+      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
+      <option name="DEBUGGER_TYPE" value="Auto" />
+      <Auto>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Auto>
+      <Hybrid>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Hybrid>
+      <Java />
+      <Native>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Native>
+      <Profilers>
+        <option name="ADVANCED_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Java/Kotlin Method Sample (legacy)" />
+        <option name="STARTUP_NATIVE_MEMORY_PROFILING_ENABLED" value="false" />
+        <option name="NATIVE_MEMORY_SAMPLE_RATE_BYTES" value="2048" />
+      </Profilers>
+      <option name="DEEP_LINK" value="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <option name="SEARCH_ACTIVITY_IN_GLOBAL_SCOPE" value="false" />
+      <option name="SKIP_ACTIVITY_VALIDATION" value="false" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="08a66aa1-ad1d-43ab-b639-2860983973f1" name="Changes" comment="" />
+      <created>1709749425779</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1709749425779</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
