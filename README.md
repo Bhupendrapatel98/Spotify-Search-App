@@ -34,6 +34,8 @@ Video Link -https://github.com/Bhupendrapatel98/Spotify-Search-App/assets/554110
 **Dagger Hilt**: For dependency injection.<br>
 **Retrofit**: For making network requests.<br>
 **Room**: For local caching and offline support.<br>
+**Mockito**: For mocking objects in tests.<br>
+**JUnit**: For unit testing.<br>
 
 # Architecture
 The application follows the Single Activity Multiple Fragments architecture using Navigation Component. Each feature is divided into fragments, 
@@ -48,6 +50,9 @@ Sealed class and Enum are utilized for managing different types of search result
 
 # Dependency Injection
 Dependency Injection is implemented using Dagger Hilt for better modularization, testability, and maintainability of the codebase.
+
+# Unit Testing
+Mockito and JUnit validate SearchRepository and SearchViewModel functionalities, ensuring reliability.
 
 # Conclusion
 The project successfully implements a search feature using Spotify's API with offline support and follows best practices in terms of architecture, 
