@@ -44,8 +44,8 @@ class SearchUserRepositoryImpl @Inject constructor(
         }
     }
 
-    private suspend fun showCacheData(): SearchResponse {
-        val item = searchDatabase.searchDao().getAllSearch()
+    suspend fun showCacheData(): SearchResponse {
+         val item = searchDatabase.searchDao().getAllSearch()
         val albums = Data("", item, 1, "", 1, "", 1)
         return SearchResponse(albums, albums, albums, albums)
     }

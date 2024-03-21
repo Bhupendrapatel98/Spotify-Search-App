@@ -1,7 +1,5 @@
 package com.app.growtaskapplication.ui.viewmodel
 
-import com.app.growtaskapplication.data.api.ApiService
-import com.app.growtaskapplication.data.local.SearchDatabase
 import com.app.growtaskapplication.data.model.*
 import com.app.growtaskapplication.data.repository.SearchUserRepositoryImpl
 import com.app.growtaskapplication.utills.Resource
@@ -17,10 +15,8 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
 import org.mockito.Mock
-import org.mockito.Mockito
 import org.mockito.Mockito.*
 import org.mockito.MockitoAnnotations
-import java.security.Provider.Service
 
 @RunWith(JUnit4::class)
 class SearchUserViewModelTest {
@@ -44,10 +40,8 @@ class SearchUserViewModelTest {
         val query = "hello"
         val type = UserType.ALBUM
 
-        val item = Item("1", "album", null, null, "", "", "", 5, "", null, 5, "", true, "", null, null, null,
-            100, explicit = true, is_local = true, preview_url = "", track_number = null)
-
-        val expectedResource = createMockSearchResponse(listOf(item))
+        val expectedSearchResponse = mock(SearchResponse::class.java)
+        val expectedResource = Resource.success(expectedSearchResponse)
 
         //Given
         val queryMap = HashMap<String, String>()
@@ -67,10 +61,5 @@ class SearchUserViewModelTest {
         //Then
         val actualResource = searchUserViewModel.albums.first()
         assertEquals(expectedResource, actualResource)
-    }
-
-    private fun createMockSearchResponse(albums: List<Item>): Resource<SearchResponse> {
-        val searchResponse = SearchResponse(Data("", albums, 1, "", 1, "", 1), null, null, null)
-        return Resource.Success(searchResponse)
     }
 }
